@@ -53,28 +53,31 @@ ws.onmessage = (e) => {
     //console.log("msg = " + msg.id);
     
     if (msg.id == -1) {
-        // Когда приходит ответ о подключении к БД, начинаем отсылать запросы
-        ws.send(JSON.stringify(db_connect_query)); 
-        ws.send(JSON.stringify(dynamic_global_props_query)); 
-        ws.send(JSON.stringify(bts_object_query)); 
-        ws.send(JSON.stringify(global_props_query)); 
+      // Когда приходит ответ о подключении к БД, начинаем отсылать запросы
+      ws.send(JSON.stringify(db_connect_query)); 
+      ws.send(JSON.stringify(dynamic_global_props_query)); 
+      ws.send(JSON.stringify(bts_object_query)); 
+      ws.send(JSON.stringify(global_props_query)); 
     }
     
     if (msg.id == 10) {
-        console.log("Последний блок: " + msg.result.head_block_number + " (" + msg.result.time + ", надо дату немного скорректировать)");
+      console.log("Последний блок: " + msg.result.head_block_number + " (" + msg.result.time + ", надо дату немного скорректировать)");
     }
     if (msg.id == 11) {
-        console.log("Текущее количество: " + msg.result[0].current_supply + " BTS (надо немного подшаманить количество)");
-        console.log("Стелс-количество: " + msg.result[0].confidential_supply + " BTS (надо немного подшаманить количество)");
+      console.log("Текущее количество: " + msg.result[0].current_supply + " BTS (надо немного подшаманить количество)");
+      console.log("Стелс-количество: " + msg.result[0].confidential_supply + " BTS (надо немного подшаманить количество)");
     }
     if (msg.id == 12) {
-        console.log("Активные члены комитета: " + msg.result.active_committee_members.length);
-        console.log("Активные заверители: " + msg.result.active_witnesses.length)
-        console.log(" ");
-        console.log("Комиссии, стандартные / для пожизненной подписки (надо преобразовать все значения):");
-        console.log("Перевод: " + msg.result.parameters.current_fees.parameters[0][1].fee + " / " + msg.result.parameters.current_fees.parameters[0][1].fee * 0.2 + " BTS");
-        console.log("Цена за килобайт данных транзакции: " + msg.result.parameters.current_fees.parameters[0][1].price_per_kbyte + " / " + msg.result.parameters.current_fees.parameters[0][1].price_per_kbyte * 0.2 + " BTS");
-        console.log("Пожизненное членство: " + msg.result.parameters.current_fees.parameters[8][1].membership_lifetime_fee + " / " + " BTS");
+      console.log("Активные члены комитета: " + msg.result.active_committee_members.length);
+      console.log("Активные заверители: " + msg.result.active_witnesses.length)
+      console.log(" ");
+      console.log("Комиссии, стандартные / для пожизненной подписки (надо преобразовать все значения):");
+      console.log("Перевод: " + msg.result.parameters.current_fees.parameters[0][1].fee + " / " + msg.result.parameters.current_fees.parameters[0][1].fee * 0.2 + " BTS");
+      console.log("Перевод (за килобайт данных транзакции): " + msg.result.parameters.current_fees.parameters[0][1].price_per_kbyte + " / " + msg.result.parameters.current_fees.parameters[0][1].price_per_kbyte * 0.2 + " BTS");
+      console.log();
+      console.log("Пожизненное членство: " + msg.result.parameters.current_fees.parameters[8][1].membership_lifetime_fee + " / " + " BTS");
+      console.log();
+      console.log();
         
     }
     
