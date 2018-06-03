@@ -62,16 +62,18 @@ ws.onmessage = (e) => {
     
     if (msg.id == 10) {
       console.log("Последний блок: " + msg.result.head_block_number + " (" + msg.result.time + ", надо дату немного скорректировать)");
+      console.log(" ");
+      console.log(" ------------------------------- ");
+      console.log(" ");
     }
     if (msg.id == 11) {
       console.log("Текущее количество: " + msg.result[0].current_supply + " BTS (надо немного подшаманить количество)");
       console.log("Стелс-количество: " + msg.result[0].confidential_supply + " BTS (надо немного подшаманить количество)");
+      console.log(" ");
+      console.log(" ------------------------------- ");
+      console.log(" ");
     }
     if (msg.id == 12) {
-      console.log("Активные члены комитета: " + msg.result.active_committee_members.length);
-      console.log("Активные заверители: " + msg.result.active_witnesses.length)
-      console.log(" ");
-      
       // Всё это смотрю через парсер тут - jsonlint.com
       // В экосистеме BitShares каждой операции присваивается индивидуальная комиссия. Эти комиссии могут меняться. Тем не менее, они определяются только одобрением держателей долей, поэтому каждый держатель основного актива BitShares (BTS) имеет право влиять на то, какими эти комиссии должны быть. Если держатели согласятся снизить некую комиссию и консенсус будет достигнут, комиссия будет автоматически снижена блокчейном. Изменения параметров блокчейна предлагаются членами комитета. Этих члены избираются держателями долей и улучшают показатели гибкости и реакции.
       // Комиссии, требующие пожизненной подписки (tm_required) 5, 7, 20, 21, 34 - выплачиваются полностью, а потом 80% возвращается на вестинговые баланс
@@ -157,7 +159,45 @@ ws.onmessage = (e) => {
       console.log("[35] Специальная: " + (msg.result.parameters.current_fees.parameters[35][1].fee / 100000) + " / " + (msg.result.parameters.current_fees.parameters[35][1].fee * 0.2 / 100000).toFixed(5) + " BTS");
       console.log("[35] Специальная (цена за килобайт данных транзакции): " + (msg.result.parameters.current_fees.parameters[35][1].price_per_kbyte / 100000) + " / " + (msg.result.parameters.current_fees.parameters[35][1].price_per_kbyte * 0.2 / 100000).toFixed(5) + " BTS");
       console.log("[36] Операция подтверждения: " + (msg.result.parameters.current_fees.parameters[36][1].fee / 100000) + " / " + (msg.result.parameters.current_fees.parameters[36][1].fee * 0.2 / 100000).toFixed(5) + " BTS");
-      console.log(" ");      
+      console.log(" ");
+      console.log(" ------------------------------- ");
+      console.log(" ");
+      console.log("Комитет");
+      console.log("Активные члены комитета: " + msg.result.active_committee_members.length);
+      console.log("Список id членов комитета: " + msg.result.active_committee_members);
+      
+      // Таким запросом мы получаем данные по каждому участнику комитета
+      // {"id":1, "method":"call", "params":[2,"get_objects",[["1.5.15"]]]}
+      // Прилетает что-нибудь такое
+      // {"id":1,"jsonrpc":"2.0","result":[{"id":"1.5.15","committee_member_account":"1.2.121","vote_id":"0:85","total_votes":"71082645234821","url":"transwiser.com"}]}
+      // Из этих ответов надо дёргать и формировать список: имя аккаунта по id (committee_member_account), количество голосов (total_votes) и url
+      // Пример тут: https://market.rudex.org/#/explorer/committee-members
+      
+      console.log(" ");
+      console.log(" ------------------------------- ");
+      console.log(" ");
+      console.log("Заверители");
+      console.log("Текущие заверители: " + msg.result.active_witnesses.length);
+      console.log("Список id заверителей: " + msg.result.active_witnesses);
+      // {"id":1, "method":"call", "params":[2,"get_objects",[["1.6.16"]]]}
+      // Прилетает что-нибудь такое
+      // {"id":1,"jsonrpc":"2.0","result":[{"id":"1.6.16","witness_account":"1.2.167","last_aslot":27704221,"signing_key":"BTS7aosZBJxYvWJhFyunKjv6GgfcSfW6BASZho8o187gm8M4a3fMH","pay_vb":"1.13.32","vote_id":"1:26","total_votes":"70173628937417","url":".","total_missed":4554,"last_confirmed_block_num":27553854}]}
+      /*
+      Из этих ответов надо дёргать и формировать список:
+       * имя заверителя (witness_account)
+       * количество голосов (total_votes)
+       * пропущенные блоки (total_missed)
+       * последний подтверждённый блок (last_confirmed_block_num)
+       * время с последнего блока (хз, где достать - видимо, через какой-нибудь get_object и по номеру блока).
+      
+       А также нужна общая инфа:
+       * уровень участия (в процентах)
+       * оплата за блок (msg.result.parameters.current_fees.witness_pay_per_block)
+       * оставшийся бюджет
+       * следующее обновление
+       * пример тут: https://market.rudex.org/#/explorer/witnesses
+      */
+       
     }
     
 };
