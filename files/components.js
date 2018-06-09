@@ -1,7 +1,14 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  TouchableHighlight
+} from "react-native";
 import { appStyle } from "./styles.js";
-import Menu, { MenuItem, MenuDivider } from "react-native-material-menu";
+import Menu, { MenuItem, MenuDivider } from "react-native-material-menu"; // Version can be specified in package.json
 
 const styles = StyleSheet.create(appStyle);
 
@@ -32,7 +39,7 @@ export class MyListItem extends Component {
 
     let title = this.props.title;
 
-    titleSplitter = () => {
+    let titleSplitter = () => {
       if (title.includes(".")) {
         let tit = title.split(".");
         return (
@@ -75,50 +82,56 @@ export class MyListItem extends Component {
     };
 
     return (
-      <View style={styles.item}>
-        <View
-          style={{
-            flex: 2
-          }}
-        >
-          {titleSplitter(title)}
-          <View style={{ alignSelf: "flex-start" }}>
-            <Text style={{ fontSize: 10 }}>
-              {new Date(this.props.time).toLocaleTimeString()}
-            </Text>
-          </View>
-        </View>
-        <View
-          style={{
-            flex: 4,
-            flexDirection: "row",
-            justifyContent: "center"
-          }}
-        >
+      <TouchableHighlight
+        onPress={this.props.press}
+        onLongPress={this.props.longpress}
+        underlayColor="white"
+      >
+        <View style={this.props.style}>
           <View
             style={{
-              marginEnd: 10,
-              flex: 1.5
+              flex: 2
             }}
           >
-            <Text style={{ fontSize: 14, alignSelf: "flex-end" }}>
-              {this.props.latest}
-            </Text>
-            {colorized()}
+            {titleSplitter(title)}
+            <View style={{ alignSelf: "flex-start" }}>
+              <Text style={{ fontSize: 10 }}>
+                {new Date(this.props.time).toLocaleTimeString()}
+              </Text>
+            </View>
           </View>
           <View
             style={{
-              flex: 1.2,
+              flex: 4,
+              flexDirection: "row",
+              justifyContent: "center"
+            }}
+          >
+            <View
+              style={{
+                marginEnd: 10,
+                flex: 1.5
+              }}
+            >
+              <Text style={{ fontSize: 14, alignSelf: "flex-end" }}>
+                {this.props.latest}
+              </Text>
+              {colorized()}
+            </View>
+            <View
+              style={{
+                flex: 1.2,
 
-              marginEnd: 10
-            }}
-          >
-            <Text style={{ fontSize: 14, alignSelf: "flex-end" }}>
-              {this.props.quote_volume}
-            </Text>
+                marginEnd: 10
+              }}
+            >
+              <Text style={{ fontSize: 14, alignSelf: "flex-end" }}>
+                {this.props.base_volume}
+              </Text>
+            </View>
           </View>
         </View>
-      </View>
+      </TouchableHighlight>
     );
   }
 }
@@ -140,16 +153,22 @@ export class CustomMenu extends Component {
 
   render() {
     return (
-      <View style={{ padding: 10 }}>
+      <View style={{ padding: 10, flexDirection: "row", alignItems: "center" }}>
+        <TouchableHighlight onPress={this.props.func}>
+          <Image
+            style={{ width: 27, height: 27, marginEnd: 15 }}
+            source={this.props.star}
+          />
+        </TouchableHighlight>
         <Menu
           ref={this.setMenuRef}
           button={
-            <TouchableOpacity onPress={this.showMenu}>
+            <TouchableHighlight onPress={this.showMenu}>
               <Image
                 style={{ width: 30, height: 30 }}
-                source={require("../img/menu-icon.png")}
+                source={require("../img/menu.png")}
               />
-            </TouchableOpacity>
+            </TouchableHighlight>
           }
         >
           <MenuItem onPress={this.hideMenu}>Menu item 1</MenuItem>
@@ -167,18 +186,18 @@ export class CustomMenu extends Component {
 
 export class Footer extends Component {
   render() {
-    return (
-      <View style={styles.bottom_toolbar}>
-        <Image
-          style={{ width: 30, height: 30 }}
-          source={require("../img/list.png")}
+    let objects = this.props.items.map((item, index) => {
+      return (
+        <ImgButton
+          imgstyle={{ width: 30, height: 30, margin: 5 }}
+          key={index}
+          id={index}
+          source={item.req}
+          func={item.func}
         />
-        <Image
-          style={{ width: 30, height: 30 }}
-          source={require("../img/info.png")}
-        />
-      </View>
-    );
+      );
+    });
+    return <View style={styles.bottom_toolbar}>{objects}</View>;
   }
 }
 
@@ -203,7 +222,7 @@ export class Loading extends Component {
         </Text>
         <Text
           style={{
-            color: "chocolate",
+            color: "#74270e",
             fontSize: 45,
             fontWeight: "bold",
             position: "absolute",
@@ -215,6 +234,97 @@ export class Loading extends Component {
         </Text>
         <Text style={{ fontSize: 18 }}>loading...</Text>
       </View>
+    );
+  }
+}
+
+export class SortBar extends Component {
+  render() {
+    let funct = this.props.func;
+    let hoverbut = this.props.hoverbut;
+    let buttons = ["Name", "Price", "Change", "Volume"];
+    let buttMap = buttons.map((item, index) => {
+      let txtstyle = { alignSelf: "center", color: "white" };
+      if (index == hoverbut || index == hoverbut - 100)
+        txtstyle.color = "yellow";
+      if (index == 0) {
+        txtstyle.alignSelf = "flex-start";
+        txtstyle.marginStart = 8;
+      }
+      if (index == 1) {
+        txtstyle.alignSelf = "flex-end";
+        txtstyle.marginEnd = 5;
+      }
+      if (index == 2) {
+        txtstyle.alignSelf = "flex-start";
+        txtstyle.marginStart = 10;
+      }
+      if (index == 3) {
+        txtstyle.alignSelf = "flex-end";
+        txtstyle.marginEnd = 10;
+      }
+      if (hoverbut == index) {
+        item = item + "▼";
+      } else if (hoverbut - 100 == index) {
+        item = item + "▲";
+      }
+
+      return (
+        <TxtButton
+          key={index}
+          id={index}
+          func={funct}
+          style={{
+            flex: 2
+          }}
+          text={item}
+          textstyle={txtstyle}
+        />
+      );
+    });
+
+    return (
+      <View
+        style={{
+          flex: 0,
+          height: 30,
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          backgroundColor: "#1f3c03"
+        }}
+      >
+        {buttMap}
+      </View>
+    );
+  }
+}
+ 
+export class TxtButton extends Component {
+  render() {
+    return (
+      <TouchableOpacity
+        style={this.props.style}
+        onPress={() => this.props.func(this.props.id)}
+      >
+        <Text style={this.props.textstyle}>{this.props.text}</Text>
+      </TouchableOpacity>
+    );
+  }
+}
+
+export class ImgButton extends Component {
+  render() {
+    let id = this.props.id;
+    return (
+      <TouchableOpacity
+        style={this.props.touchstyle}
+        onPress={
+          id == undefined ? this.props.func : this.props.func(id)
+        }
+      >
+        <Image style={this.props.imgstyle} source={this.props.source} />
+      </TouchableOpacity>
     );
   }
 }

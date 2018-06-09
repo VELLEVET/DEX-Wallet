@@ -5,26 +5,32 @@ import {
   View,
   StyleSheet,
   Text,
-  Button,
-  ToolbarAndroid,
   FlatList,
-  ListItem,
   Image,
   RefreshControl,
-  StatusBar
+  TouchableHighlight
 } from "react-native";
 import { TabViewAnimated, TabBar } from "react-native-tab-view";
 import { savedState, defaultRoute } from "./files/default_struct.js";
 import { appStyle } from "./files/styles.js";
-import { MyListItem, CustomMenu, Footer, Loading } from "./files/components.js";
+import {
+  MyListItem,
+  CustomMenu,
+  Footer,
+  Loading,
+  SortBar,
+  TxtButton,
+  ImgButton
+} from "./files/components.js";
 import {
   nFormatter,
   fetcher,
   mapCreate,
-  updateTab
+  updateTab,
+  sortRouter
 } from "./files/functions.js";
 
-import objMap from "./files/objMap.js";
+import { objMap } from "./files/objMap.js";
 const styles = StyleSheet.create(appStyle);
 
 let canJump = true;
@@ -42,12 +48,23 @@ export default class DynamicExample extends Component {
     index: 0,
     routes: defaultRoute,
     loading: true,
-    refreshing: false
+    refreshing: false,
+    sort: 3,
+    modalKey: -1,
+    favorites: false
   };
 
-  stateChanger = params => {
-    this.setState(params);
-  };
+  setModalKey(key) {
+    if (key === "press") {
+      this.state.modalKey != -1
+        ? this.setState({ modalKey: -1 })
+        : alert("Open sesame!");
+    } else {
+      this.setState(
+        this.state.modalKey != -1 ? { modalKey: -1 } : { modalKey: key }
+      );
+    }
+  }
 
   componentDidMount() {
     savedState.forEach(item => {
@@ -66,13 +83,24 @@ export default class DynamicExample extends Component {
   };
 
   _renderHeader = props => {
+    let req = require("./img/starempty.png");
+    if (this.state.favorites) {
+      req = require("./img/star.png");
+    }
     return (
       <View style={{ flex: 0 }}>
         <View style={styles.toolbar}>
           <View style={{ padding: 10 }}>
             <Text style={{ fontSize: 22, color: "white" }}>DEX Wallet</Text>
           </View>
-          <CustomMenu />
+          <CustomMenu
+            func={() => {
+              this.setState(prevState => ({
+                favorites: !prevState.favorites
+              }));
+            }}
+            star={req}
+          />
         </View>
 
         <TabBar
@@ -81,13 +109,25 @@ export default class DynamicExample extends Component {
           indicatorStyle={styles.indicator}
           style={styles.tabbar}
           labelStyle={styles.label}
+          tabStyle={styles.tabstyle}
         />
+        <SortBar func={this.sortTab} hoverbut={this.state.sort} />
       </View>
     );
   };
 
+  sortTab = id => {
+    return this.setState(
+      this.state.sort == id ? { sort: id + 100 } : { sort: id }
+    );
+  };
+
   _renderFooter = props => {
-    return <Footer />;
+    let items = [
+      { req: require("./img/list.png"), func: () => {} },
+      { req: require("./img/info.png"), func: () => {} }
+    ];
+    return <Footer items={items} />;
   };
 
   _onRefresh() {
@@ -99,7 +139,39 @@ export default class DynamicExample extends Component {
     });
   }
 
+  modalFunc = () => {
+    let routes = [...this.state.routes];
+    let quotes = routes[this.state.index].quotes;
+    let modKey = this.state.modalKey;
+    let k = quotes.findIndex(x => x.key === modKey);
+
+    if (k != -1) {
+      quotes[k].favorite = quotes[k].favorite ? false : true;
+    }
+
+    this.setState({
+      routes: routes,
+      modalKey: -1
+    });
+  };
+
   _renderScene = ({ route }) => {
+    let qts = [...this.state.routes[this.state.index].quotes];
+    let modKey = this.state.modalKey;
+    let favText = "a";
+    if (this.state.favorites) {
+      qts = qts.filter(item => item.favorite);
+    }
+    let k = qts.find(x => x.key == modKey);
+    if (k != undefined) {
+      k.favorite
+        ? (favText = "Remove from favorites")
+        : (favText = "Add to favorites");
+    }
+    if (this.state.sort != -1 && qts.length > 1) {
+      qts.sort(sortRouter(this.state.sort));
+    }
+
     return (
       <View style={styles.page}>
         <FlatList
@@ -110,22 +182,73 @@ export default class DynamicExample extends Component {
             />
           }
           ListFooterComponent={<View style={{ height: 40 }} />}
-          style={{ flex: 1 }}
-          data={route.quotes}
+          style={styles.flatlist}
+          data={qts}
+          ListEmptyComponent={
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <Text
+                style={{
+                  marginTop: 100,
+                  fontSize: 24,
+                  color: "gray",
+                  fontWeight: "bold"
+                }}
+              >
+                {this.state.favorites ? "No favorites :-(" : "No items."}
+              </Text>
+            </View>
+          }
           keyExtractor={item => item.key}
-          renderItem={({ item }) => (
-            <MyListItem
-              style={styles.item}
-              title={item.title}
-              item_key={item.key}
-              route_key={route.key}
-              latest={item.latest}
-              percent_change={item.percent_change}
-              base_volume={item.base_volume}
-              quote_volume={item.quote_volume}
-              time={item.time}
-            />
-          )}
+          renderItem={({ item }) => {
+            let styleItem = Object.assign({}, StyleSheet.flatten(styles.item));
+            if (item.favorite == true) {
+              styleItem.backgroundColor = "#effbc4";
+            }
+            if (this.state.modalKey == item.key) {
+              return (
+                <View style={styles.asset_menu}>
+                  <ImgButton
+                    imgstyle={{ width: 30, height: 30 }}
+                    source={require("./img/info2.png")}
+                    func={this.modalFunc}
+                  />
+                  <ImgButton
+                    imgstyle={{ width: 30, height: 30 }}
+                    source={
+                      item.favorite
+                        ? require("./img/star.png")
+                        : require("./img/starempty.png")
+                    }
+                    func={this.modalFunc}
+                  />
+                </View>
+              );
+            } else
+              return (
+                <MyListItem
+                  longpress={() => {
+                    this.setModalKey(item.key);
+                  }}
+                  press={() => {
+                    this.setModalKey("press");
+                  }}
+                  style={styleItem}
+                  title={item.title}
+                  item_key={item.key}
+                  route_key={route.key}
+                  latest={item.latest}
+                  percent_change={item.percent_change}
+                  base_volume={nFormatter(item.base_volume, 2)}
+                  time={item.time}
+                />
+              );
+          }}
         />
       </View>
     );

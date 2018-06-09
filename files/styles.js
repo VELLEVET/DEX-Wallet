@@ -4,11 +4,18 @@ export const appStyle = {
     marginTop: 12
   },
   tabbar: {
-    backgroundColor: "#222"
+    backgroundColor: "#0d2424"
+  },
+  dim: {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 30
   },
   page: {
     flex: 1,
-    justifyContent: "center",
     backgroundColor: "#f9f4eb"
   },
   indicator: {
@@ -16,29 +23,30 @@ export const appStyle = {
   },
   label: {
     color: "#fff",
-    fontWeight: "400"
+    fontWeight: "bold"
+  },
+  tabstyle: {
+    height: 50,
+    width: 100
   },
   toolbar: {
     flex: 0,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#543532",
+    backgroundColor: "#3f493b",
     height: 56
   },
   bottom_toolbar: {
     position: "absolute",
-    justifyContent: "space-evenly",
     bottom: 0,
-    width: 220,
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    backgroundColor: "#110d0c",
-    alignSelf: "center",
+    padding: 5,
+    borderTopLeftRadius: 10,
+    backgroundColor: "#0c110b",
+    alignSelf: "flex-end",
     alignItems: "center",
     flexDirection: "row",
-    height: 40,
-    opacity: 0.8
+    opacity: 0.7
   },
   item: {
     flex: 1,
@@ -47,7 +55,19 @@ export const appStyle = {
     backgroundColor: "#fff",
     padding: 8,
     borderBottomWidth: 2,
-    borderRadius: 2,
     borderColor: "#ddd"
+  },
+  asset_menu: {  
+   alignSelf: "stretch",
+   alignItems: "center", 
+    backgroundColor: "#3f493b",
+    flexDirection: "row",
+    padding:10,
+    justifyContent: "space-around",
+    borderBottomWidth: 2,
+    borderColor: "#ddd"
+  },
+  assetmodalitem: {
+    marginTop: 30
   }
 };

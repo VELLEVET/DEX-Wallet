@@ -1,3 +1,3 @@
-export default (objMap = {});
+export const objMap = {};
 // Temporary solution
 // TODO: Refactoring
