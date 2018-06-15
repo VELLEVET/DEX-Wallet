@@ -1,6 +1,6 @@
 /* @flow */
 
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   View,
   StyleSheet,
@@ -8,11 +8,12 @@ import {
   FlatList,
   Image,
   RefreshControl,
-  TouchableHighlight
-} from "react-native";
-import { TabViewAnimated, TabBar } from "react-native-tab-view";
-import { savedState, defaultRoute } from "./files/default_struct.js";
-import { appStyle } from "./files/styles.js";
+  TouchableHighlight,
+  TouchableOpacity,
+} from 'react-native';
+import { TabViewAnimated, TabBar } from 'react-native-tab-view';
+import { savedState, defaultRoute } from './files/default_struct.js';
+import { appStyle } from './files/styles.js';
 import {
   MyListItem,
   CustomMenu,
@@ -20,24 +21,24 @@ import {
   Loading,
   SortBar,
   TxtButton,
-  ImgButton
-} from "./files/components.js";
+  ImgButton,
+  CustomModal,
+} from './files/components.js';
 import {
   nFormatter,
   fetcher,
   mapCreate,
   updateTab,
-  sortRouter
-} from "./files/functions.js";
-
-import { objMap } from "./files/objMap.js";
+  sortRouter,
+} from './files/functions.js';
+import { loc } from './files/locales.js';
+import { objMap } from './files/objMap.js';
 const styles = StyleSheet.create(appStyle);
 
 let canJump = true;
-
 export default class DynamicExample extends Component {
   static propTypes = {
-    style: View.propTypes.style
+    style: View.propTypes.style,
   };
 
   constructor(props) {
@@ -51,21 +52,51 @@ export default class DynamicExample extends Component {
     refreshing: false,
     sort: 3,
     modalKey: -1,
-    favorites: false
+    favorites: false,
+    lang: 'ru',
+    modal: false,
   };
 
-  setModalKey(key) {
-    if (key === "press") {
-      this.state.modalKey != -1
-        ? this.setState({ modalKey: -1 })
-        : alert("Open sesame!");
-    } else {
-      this.setState(
-        this.state.modalKey != -1 ? { modalKey: -1 } : { modalKey: key }
-      );
+  changeFav(key){
+
+    let routes=[...this.state.routes];
+    let quote=routes[this.state.index].quotes;
+    let i = quote.find(item=>item.key===key)
+    if(i!=undefined){
+      i.favorite=!i.favorite;
     }
+    this.setState({routes:routes,modal:false});
   }
 
+  openModal(item) {
+    if(item==="lang"){
+      console.log("1");
+      this.modalParam.objects=[
+        { text: "Русский", pic: 'dot-single',func: ()=>this.setState({lang:"ru",modal:false}) },
+        { text: "English", pic: 'dot-single',func: ()=>this.setState({lang:"en",modal:false}) }
+        ]
+    }else{
+      console.log("2");
+    this.modalParam.key = item.key;
+    this.modalParam.objects = [
+      item.favorite
+        ? {
+            text: loc[this.state.lang].rmFav,
+            pic: 'star',
+            func:  ()=>this.changeFav(item.key)
+          }
+        : { text: loc[this.state.lang].addFav, pic: 'star-outlined',func: ()=>this.changeFav(item.key) },
+      { text: loc[this.state.lang].info, pic: 'info',func:()=>{alert(loc[this.state.lang].alertInfo)}},
+    ];
+    }
+    this.setState({modal:true});  
+    }
+  
+  modalParam = {
+    key: -1,
+    objects: [],
+  };
+  
   componentDidMount() {
     savedState.forEach(item => {
       objMap[item.key] = {};
@@ -83,20 +114,25 @@ export default class DynamicExample extends Component {
   };
 
   _renderHeader = props => {
-    let req = require("./img/starempty.png");
+    let req = require('./img/starempty.png');
     if (this.state.favorites) {
-      req = require("./img/star.png");
+      req = require('./img/star.png');
     }
     return (
       <View style={{ flex: 0 }}>
         <View style={styles.toolbar}>
           <View style={{ padding: 10 }}>
-            <Text style={{ fontSize: 22, color: "white" }}>DEX Wallet</Text>
+            <Text style={{ fontSize: 22, color: 'white' }}>DEX Wallet</Text>
           </View>
           <CustomMenu
+            donateUs={loc[this.state.lang].donateUs}
+            langtext={loc[this.state.lang].lang}
+            langmenu={() => {
+              this.openModal("lang");
+            }}
             func={() => {
               this.setState(prevState => ({
-                favorites: !prevState.favorites
+                favorites: !prevState.favorites,
               }));
             }}
             star={req}
@@ -111,7 +147,11 @@ export default class DynamicExample extends Component {
           labelStyle={styles.label}
           tabStyle={styles.tabstyle}
         />
-        <SortBar func={this.sortTab} hoverbut={this.state.sort} />
+        <SortBar
+          lang={this.state.lang}
+          func={this.sortTab}
+          hoverbut={this.state.sort}
+        />
       </View>
     );
   };
@@ -124,8 +164,8 @@ export default class DynamicExample extends Component {
 
   _renderFooter = props => {
     let items = [
-      { req: require("./img/list.png"), func: () => {} },
-      { req: require("./img/info.png"), func: () => {} }
+      { req: require('./img/list.png'), func: () => {} },
+      { req: require('./img/info.png'), func: () => {} },
     ];
     return <Footer items={items} />;
   };
@@ -139,39 +179,14 @@ export default class DynamicExample extends Component {
     });
   }
 
-  modalFunc = () => {
-    let routes = [...this.state.routes];
-    let quotes = routes[this.state.index].quotes;
-    let modKey = this.state.modalKey;
-    let k = quotes.findIndex(x => x.key === modKey);
-
-    if (k != -1) {
-      quotes[k].favorite = quotes[k].favorite ? false : true;
-    }
-
-    this.setState({
-      routes: routes,
-      modalKey: -1
-    });
-  };
-
   _renderScene = ({ route }) => {
     let qts = [...this.state.routes[this.state.index].quotes];
-    let modKey = this.state.modalKey;
-    let favText = "a";
     if (this.state.favorites) {
       qts = qts.filter(item => item.favorite);
-    }
-    let k = qts.find(x => x.key == modKey);
-    if (k != undefined) {
-      k.favorite
-        ? (favText = "Remove from favorites")
-        : (favText = "Add to favorites");
     }
     if (this.state.sort != -1 && qts.length > 1) {
       qts.sort(sortRouter(this.state.sort));
     }
-
     return (
       <View style={styles.page}>
         <FlatList
@@ -188,19 +203,19 @@ export default class DynamicExample extends Component {
             <View
               style={{
                 flex: 1,
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
               <Text
                 style={{
                   marginTop: 100,
                   fontSize: 24,
-                  color: "gray",
-                  fontWeight: "bold"
-                }}
-              >
-                {this.state.favorites ? "No favorites :-(" : "No items."}
+                  color: 'gray',
+                  fontWeight: 'bold',
+                }}>
+                {this.state.favorites
+                  ? loc[this.state.lang].noFav
+                  : loc[this.state.lang].noItems}
               </Text>
             </View>
           }
@@ -208,46 +223,26 @@ export default class DynamicExample extends Component {
           renderItem={({ item }) => {
             let styleItem = Object.assign({}, StyleSheet.flatten(styles.item));
             if (item.favorite == true) {
-              styleItem.backgroundColor = "#effbc4";
+              styleItem.backgroundColor = '#effbc4';
             }
-            if (this.state.modalKey == item.key) {
-              return (
-                <View style={styles.asset_menu}>
-                  <ImgButton
-                    imgstyle={{ width: 30, height: 30 }}
-                    source={require("./img/info2.png")}
-                    func={this.modalFunc}
-                  />
-                  <ImgButton
-                    imgstyle={{ width: 30, height: 30 }}
-                    source={
-                      item.favorite
-                        ? require("./img/star.png")
-                        : require("./img/starempty.png")
-                    }
-                    func={this.modalFunc}
-                  />
-                </View>
-              );
-            } else
-              return (
-                <MyListItem
-                  longpress={() => {
-                    this.setModalKey(item.key);
-                  }}
-                  press={() => {
-                    this.setModalKey("press");
-                  }}
-                  style={styleItem}
-                  title={item.title}
-                  item_key={item.key}
-                  route_key={route.key}
-                  latest={item.latest}
-                  percent_change={item.percent_change}
-                  base_volume={nFormatter(item.base_volume, 2)}
-                  time={item.time}
-                />
-              );
+            return (
+              <MyListItem
+                longpress={() => {
+                  this.openModal(item);
+                }}
+                press={() => {
+                  alert(loc[this.state.lang].alertGr);
+                }}
+                style={styleItem}
+                title={item.title}
+                item_key={item.key}
+                route_key={route.key}
+                latest={item.latest}
+                percent_change={item.percent_change}
+                base_volume={nFormatter(item.base_volume, 2)}
+                time={item.time}
+              />
+            );
           }}
         />
       </View>
@@ -265,7 +260,6 @@ export default class DynamicExample extends Component {
           navigationState={this.state}
           renderScene={this._renderScene}
           renderHeader={this._renderHeader}
-          renderFooter={this._renderFooter}
           onRequestChangeTab={this._handleChangeTab}
           onIndexChange={this._handleChangeTab}
         />
@@ -275,8 +269,18 @@ export default class DynamicExample extends Component {
   canJumpToTab(route) {
     return canJump;
   }
+
   render() {
-    console.log("render");
-    return <View style={styles.container}>{this.renderScreen()}</View>;
+    console.log('render');
+    return (
+      <View style={styles.maincontainer}>
+        <CustomModal
+          on={this.state.modal}
+          dim={() => this.setState({ modal: false })}
+          objects={this.modalParam.objects}
+        />
+        {this.renderScreen()}
+      </View>
+    );
   }
 }

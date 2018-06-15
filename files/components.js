@@ -7,10 +7,36 @@ import {
   Image,
   TouchableHighlight
 } from "react-native";
+import Icon from "react-native-vector-icons/Entypo";
 import { appStyle } from "./styles.js";
-import Menu, { MenuItem, MenuDivider } from "react-native-material-menu"; // Version can be specified in package.json
-
+import Menu, { MenuItem, MenuDivider } from "react-native-material-menu";
+import { loc } from "./locales.js";
 const styles = StyleSheet.create(appStyle);
+
+export class CustomModal extends Component {
+  render() {
+    let arr = this.props.objects.map((item, index) => (
+      <Icon.Button
+        key={index}
+        onPress={item.func}
+        name={item.pic}
+        backgroundColor="white"
+        color="black"
+      >
+        <Text style={{ fontSize: 20, color: "black" }}>{item.text}</Text>
+      </Icon.Button>
+    ));
+
+    return !this.props.on ? null : (
+      <View style={styles.modalmain}>
+        <TouchableOpacity onPress={this.props.dim} style={styles.touch} />
+        <View style={styles.dim} />
+
+        <View style={styles.modal}>{arr}</View>
+      </View>
+    );
+  }
+}
 
 export class MyListItem extends Component {
   render() {
@@ -90,7 +116,7 @@ export class MyListItem extends Component {
         <View style={this.props.style}>
           <View
             style={{
-              flex: 2
+              flex: 8
             }}
           >
             {titleSplitter(title)}
@@ -100,35 +126,25 @@ export class MyListItem extends Component {
               </Text>
             </View>
           </View>
+
           <View
             style={{
-              flex: 4,
-              flexDirection: "row",
-              justifyContent: "center"
+              flex: 6
             }}
           >
-            <View
-              style={{
-                marginEnd: 10,
-                flex: 1.5
-              }}
-            >
-              <Text style={{ fontSize: 14, alignSelf: "flex-end" }}>
-                {this.props.latest}
-              </Text>
-              {colorized()}
-            </View>
-            <View
-              style={{
-                flex: 1.2,
-
-                marginEnd: 10
-              }}
-            >
-              <Text style={{ fontSize: 14, alignSelf: "flex-end" }}>
-                {this.props.base_volume}
-              </Text>
-            </View>
+            <Text style={{ fontSize: 14, alignSelf: "flex-end" }}>
+              {this.props.latest}
+            </Text>
+            {colorized()}
+          </View>
+          <View
+            style={{
+              flex: 4
+            }}
+          >
+            <Text style={{ fontSize: 14, alignSelf: "flex-end" }}>
+              {this.props.base_volume}
+            </Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -145,6 +161,7 @@ export class CustomMenu extends Component {
 
   hideMenu = () => {
     this._menu.hide();
+    this.props.fu;
   };
 
   showMenu = () => {
@@ -165,19 +182,22 @@ export class CustomMenu extends Component {
           button={
             <TouchableHighlight onPress={this.showMenu}>
               <Image
-                style={{ width: 30, height: 30 }}
+                style={{ width: 27, height: 27 }}
                 source={require("../img/menu.png")}
               />
             </TouchableHighlight>
           }
         >
-          <MenuItem onPress={this.hideMenu}>Menu item 1</MenuItem>
-          <MenuItem onPress={this.hideMenu}>Menu item 2</MenuItem>
-          <MenuItem onPress={this.hideMenu} disabled>
-            Bonus
+          <MenuItem
+            onPress={() => {
+              this.props.langmenu();
+              this._menu.hide();
+            }}
+          >
+            {this.props.langtext}
           </MenuItem>
           <MenuDivider />
-          <MenuItem onPress={this.hideMenu}>Menu item 4</MenuItem>
+          <MenuItem onPress={this.hideMenu}>{this.props.donateUs}</MenuItem>
         </Menu>
       </View>
     );
@@ -213,21 +233,9 @@ export class Loading extends Component {
       >
         <Text
           style={{
-            color: "burlywood",
+            color: "#2F4F4F",
             fontSize: 45,
             fontWeight: "bold"
-          }}
-        >
-          DEX Wallet
-        </Text>
-        <Text
-          style={{
-            color: "#74270e",
-            fontSize: 45,
-            fontWeight: "bold",
-            position: "absolute",
-            top: 295,
-            right: 92
           }}
         >
           DEX Wallet
@@ -240,28 +248,49 @@ export class Loading extends Component {
 
 export class SortBar extends Component {
   render() {
+    let lang = this.props.lang;
+
     let funct = this.props.func;
     let hoverbut = this.props.hoverbut;
-    let buttons = ["Name", "Price", "Change", "Volume"];
+    let buttons = [
+      loc[lang].sortName,
+      loc[lang].sortPrice,
+      loc[lang].sortChange,
+      loc[lang].sortVolume
+    ];
     let buttMap = buttons.map((item, index) => {
       let txtstyle = { alignSelf: "center", color: "white" };
+      let style = {};
       if (index == hoverbut || index == hoverbut - 100)
         txtstyle.color = "yellow";
       if (index == 0) {
         txtstyle.alignSelf = "flex-start";
-        txtstyle.marginStart = 8;
+        style.marginStart = 5;
+        style.flex = 8;
+        // style.borderStyle = 'solid';
+        // style.borderTopWidth = 1;
       }
       if (index == 1) {
         txtstyle.alignSelf = "flex-end";
-        txtstyle.marginEnd = 5;
+        style.flex = 3;
+        // style.borderStyle = 'solid';
+        // style.borderTopWidth = 2;
+        // style.borderTopColor = 'blue';
       }
       if (index == 2) {
-        txtstyle.alignSelf = "flex-start";
-        txtstyle.marginStart = 10;
+        txtstyle.alignSelf = "flex-end";
+        style.flex = 3;
+        // style.borderStyle = 'solid';
+        // style.borderTopWidth = 2;
+        // style.borderTopColor = 'yellow';
       }
       if (index == 3) {
         txtstyle.alignSelf = "flex-end";
-        txtstyle.marginEnd = 10;
+        style.flex = 4;
+        style.marginEnd = 5;
+        // style.borderStyle = 'solid';
+        // style.borderTopWidth = 2;
+        // style.borderTopColor = 'red';
       }
       if (hoverbut == index) {
         item = item + "▼";
@@ -274,9 +303,7 @@ export class SortBar extends Component {
           key={index}
           id={index}
           func={funct}
-          style={{
-            flex: 2
-          }}
+          style={style}
           text={item}
           textstyle={txtstyle}
         />
@@ -290,7 +317,6 @@ export class SortBar extends Component {
           height: 30,
           flexDirection: "row",
           alignItems: "center",
-          justifyContent: "space-between",
           backgroundColor: "#1f3c03"
         }}
       >
@@ -299,7 +325,7 @@ export class SortBar extends Component {
     );
   }
 }
- 
+
 export class TxtButton extends Component {
   render() {
     return (
@@ -319,9 +345,7 @@ export class ImgButton extends Component {
     return (
       <TouchableOpacity
         style={this.props.touchstyle}
-        onPress={
-          id == undefined ? this.props.func : this.props.func(id)
-        }
+        onPress={id == undefined ? this.props.func : this.props.func(id)}
       >
         <Image style={this.props.imgstyle} source={this.props.source} />
       </TouchableOpacity>
