@@ -1,133 +1,261 @@
 /* @flow */
 
-import React, { Component } from "react";
-import { View, StyleSheet, Text, Button, ToolbarAndroid } from "react-native";
-import { TabViewAnimated, TabBar } from "react-native-tab-view";
+import React, { Component } from 'react';
+import {
+  View,
+  StyleSheet,
+  Text,
+  FlatList,
+  Image,
+  RefreshControl,
+  TouchableHighlight,
+  TouchableOpacity,
+} from 'react-native';
+import { TabViewAnimated, TabBar } from 'react-native-tab-view';
+import { savedState, defaultRoute } from './files/default_struct.js';
+import { appStyle } from './files/styles.js';
+import {
+  MyListItem,
+  CustomMenu,
+  Footer,
+  Loading,
+  SortBar,
+  TxtButton,
+  ImgButton,
+  CustomModal,
+} from './files/components.js';
+import {
+  nFormatter,
+  fetcher,
+  mapCreate,
+  updateTab,
+  sortRouter,
+} from './files/functions.js';
+import { loc } from './files/locales.js';
+import { objMap } from './files/objMap.js';
+const styles = StyleSheet.create(appStyle);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 20
-  },
-  tabbar: {
-    backgroundColor: "#222"
-  },
-  page: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  indicator: {
-    backgroundColor: "#ffeb3b"
-  },
-  label: {
-    color: "#fff",
-    fontWeight: "400"
-  },
-  toolbar: {
-    backgroundColor: "#543532",
-    height: 56,
-    alignSelf: "stretch"
-  }
-});
-
+let canJump = true;
 export default class DynamicExample extends Component {
-  static title = "Dynamic tab load";
-  static appbarElevation = 0;
-
   static propTypes = {
-    style: View.propTypes.style
+    style: View.propTypes.style,
   };
+
   constructor(props) {
     super(props);
-    this.addNewObject = this.addNewObject.bind(this);
   }
+
   state = {
     index: 0,
-    routes: [],
+    routes: defaultRoute,
     loading: true,
-    data: {}
+    refreshing: false,
+    sort: 3,
+    modalKey: -1,
+    favorites: false,
+    lang: 'ru',
+    modal: false,
   };
 
-  componentDidMount() {
-    objects = [
-      { info: "Bitshare", key: "1.3.27" },
-      { info: "Nickcoin", key: "6.1.41" }
-    ];
-    this.addNewObject(objects);
+  changeFav(key){
+
+    let routes=[...this.state.routes];
+    let quote=routes[this.state.index].quotes;
+    let i = quote.find(item=>item.key===key)
+    if(i!=undefined){
+      i.favorite=!i.favorite;
+    }
+    this.setState({routes:routes,modal:false});
   }
 
-  addNewObject = objectsArray => {
-    let routes = this.state.routes;
-    objectsArray.forEach(active => {
-      routes.push({
-        title: active.info,
-        key: active.key
+  openModal(item) {
+    if(item==="lang"){
+      console.log("1");
+      this.modalParam.objects=[
+        { text: "Русский", pic: 'dot-single',func: ()=>this.setState({lang:"ru",modal:false}) },
+        { text: "English", pic: 'dot-single',func: ()=>this.setState({lang:"en",modal:false}) }
+        ]
+    }else{
+      console.log("2");
+    this.modalParam.key = item.key;
+    this.modalParam.objects = [
+      item.favorite
+        ? {
+            text: loc[this.state.lang].rmFav,
+            pic: 'star',
+            func:  ()=>this.changeFav(item.key)
+          }
+        : { text: loc[this.state.lang].addFav, pic: 'star-outlined',func: ()=>this.changeFav(item.key) },
+      { text: loc[this.state.lang].info, pic: 'info',func:()=>{alert(loc[this.state.lang].alertInfo)}},
+    ];
+    }
+    this.setState({modal:true});  
+    }
+  
+  modalParam = {
+    key: -1,
+    objects: [],
+  };
+  
+  componentDidMount() {
+    savedState.forEach(item => {
+      objMap[item.key] = {};
+      item.quotes.forEach(quote => {
+        objMap[quote] = {};
       });
     });
-
-    this.setState({
-      data: objectsArray,
-      routes,
-      loading: false
+    mapCreate().then(result => {
+      this.setState(result);
     });
-  };
+  }
 
   _handleChangeTab = index => {
     this.setState({ index });
   };
 
   _renderHeader = props => {
+    let req = require('./img/starempty.png');
+    if (this.state.favorites) {
+      req = require('./img/star.png');
+    }
     return (
-      <View>
-        <ToolbarAndroid
-          style={styles.toolbar}
-          title="Trader"
-          titleColor="#FFF"
-          actions={[{ title: "Настройки", show: "never" }]}
-          onActionSelected={this.menuActions}
-        />
+      <View style={{ flex: 0 }}>
+        <View style={styles.toolbar}>
+          <View style={{ padding: 10 }}>
+            <Text style={{ fontSize: 22, color: 'white' }}>DEX Wallet</Text>
+          </View>
+          <CustomMenu
+            donateUs={loc[this.state.lang].donateUs}
+            langtext={loc[this.state.lang].lang}
+            langmenu={() => {
+              this.openModal("lang");
+            }}
+            func={() => {
+              this.setState(prevState => ({
+                favorites: !prevState.favorites,
+              }));
+            }}
+            star={req}
+          />
+        </View>
+
         <TabBar
           {...props}
           scrollEnabled
           indicatorStyle={styles.indicator}
           style={styles.tabbar}
           labelStyle={styles.label}
+          tabStyle={styles.tabstyle}
+        />
+        <SortBar
+          lang={this.state.lang}
+          func={this.sortTab}
+          hoverbut={this.state.sort}
         />
       </View>
     );
   };
 
-  myArray = [{ info: "Rockcoin", key: "2.1.11" }];
+  sortTab = id => {
+    return this.setState(
+      this.state.sort == id ? { sort: id + 100 } : { sort: id }
+    );
+  };
+
+  _renderFooter = props => {
+    let items = [
+      { req: require('./img/list.png'), func: () => {} },
+      { req: require('./img/info.png'), func: () => {} },
+    ];
+    return <Footer items={items} />;
+  };
+
+  _onRefresh() {
+    canJump = false;
+    this.setState({ refreshing: true });
+    updateTab(this.state.index, this.state.routes).then(result => {
+      this.setState(result);
+      canJump = true;
+    });
+  }
 
   _renderScene = ({ route }) => {
+    let qts = [...this.state.routes[this.state.index].quotes];
+    if (this.state.favorites) {
+      qts = qts.filter(item => item.favorite);
+    }
+    if (this.state.sort != -1 && qts.length > 1) {
+      qts.sort(sortRouter(this.state.sort));
+    }
     return (
-      <View style={[styles.page, { backgroundColor: "#f9f4eb" }]}>
-        <Button
-          onPress={() => this.addNewObject(this.myArray)}
-          title="Push me"
-          color="#841584"
+      <View style={styles.page}>
+        <FlatList
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              onRefresh={this._onRefresh.bind(this)}
+            />
+          }
+          ListFooterComponent={<View style={{ height: 40 }} />}
+          style={styles.flatlist}
+          data={qts}
+          ListEmptyComponent={
+            <View
+              style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text
+                style={{
+                  marginTop: 100,
+                  fontSize: 24,
+                  color: 'gray',
+                  fontWeight: 'bold',
+                }}>
+                {this.state.favorites
+                  ? loc[this.state.lang].noFav
+                  : loc[this.state.lang].noItems}
+              </Text>
+            </View>
+          }
+          keyExtractor={item => item.key}
+          renderItem={({ item }) => {
+            let styleItem = Object.assign({}, StyleSheet.flatten(styles.item));
+            if (item.favorite == true) {
+              styleItem.backgroundColor = '#effbc4';
+            }
+            return (
+              <MyListItem
+                longpress={() => {
+                  this.openModal(item);
+                }}
+                press={() => {
+                  alert(loc[this.state.lang].alertGr);
+                }}
+                style={styleItem}
+                title={item.title}
+                item_key={item.key}
+                route_key={route.key}
+                latest={item.latest}
+                percent_change={item.percent_change}
+                base_volume={nFormatter(item.base_volume, 2)}
+                time={item.time}
+              />
+            );
+          }}
         />
-        <Text />
-        <Text />
-        <Text />
-        <Text style={{ fontSize: 20 }}>
-          {route.key} - {route.title}
-        </Text>
       </View>
     );
   };
 
   renderScreen() {
     if (this.state.loading) {
-      return (
-        <View>
-          <Text>Loading...</Text>
-        </View>
-      );
+      return <Loading />;
     } else {
       return (
         <TabViewAnimated
+          canJumpToTab={this.canJumpToTab}
           style={styles.container}
           navigationState={this.state}
           renderScene={this._renderScene}
@@ -138,8 +266,21 @@ export default class DynamicExample extends Component {
       );
     }
   }
+  canJumpToTab(route) {
+    return canJump;
+  }
 
   render() {
-    return <View style={styles.container}>{this.renderScreen()}</View>;
+    console.log('render');
+    return (
+      <View style={styles.maincontainer}>
+        <CustomModal
+          on={this.state.modal}
+          dim={() => this.setState({ modal: false })}
+          objects={this.modalParam.objects}
+        />
+        {this.renderScreen()}
+      </View>
+    );
   }
 }
