@@ -1,5 +1,5 @@
-import { savedState } from '../files/default_struct.js';
-import {objMap}  from '../files/objMap.js';
+import { savedState } from './default_struct.js';
+import {objMap}  from './objMap.js';
 
 export function nFormatter(num, digits) {
   var si = [

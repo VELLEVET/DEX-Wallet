@@ -1,22 +1,21 @@
 export const appStyle = {
-  maincontainer:{
-   flex:1,
-   zIndex:1
+  maincontainer: {
+    flex: 1,
+    zIndex: 1
   },
   container: {
-    flex: 1,
-    marginTop: 24,
+    flex: 1
   },
   tabbar: {
     backgroundColor: "#0d2424"
   },
-  touch:{
+  touch: {
     position: "absolute",
     top: 0,
     bottom: 0,
     left: 0,
     right: 0,
-    zIndex:4 
+    zIndex: 4
   },
   dim: {
     position: "absolute",
@@ -24,26 +23,26 @@ export const appStyle = {
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor:"black",
-    opacity:0.5, 
+    backgroundColor: "black",
+    opacity: 0.5,
     zIndex: 3
   },
-  modalmain:{
+  modalmain: {
     position: "absolute",
     top: 0,
     bottom: 0,
     left: 0,
-    right: 0, 
-    zIndex:2
+    right: 0,
+    zIndex: 2
   },
-  modal:{
-    position:"absolute",
-    bottom:0,
-    left:0,
-    right:0,
-    backgroundColor:"white", 
-    padding:20, 
-    zIndex:4
+  modal: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "white",
+    padding: 20,
+    zIndex: 4
   },
   page: {
     flex: 1,
@@ -87,5 +86,5 @@ export const appStyle = {
     padding: 8,
     borderBottomWidth: 2,
     borderColor: "#ddd"
-  },
+  }
 };

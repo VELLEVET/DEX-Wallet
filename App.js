@@ -1,6 +1,6 @@
 /* @flow */
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   StyleSheet,
@@ -9,11 +9,11 @@ import {
   Image,
   RefreshControl,
   TouchableHighlight,
-  TouchableOpacity,
-} from 'react-native';
-import { TabViewAnimated, TabBar } from 'react-native-tab-view';
-import { savedState, defaultRoute } from './files/default_struct.js';
-import { appStyle } from './files/styles.js';
+  TouchableOpacity
+} from "react-native";
+import { TabViewAnimated, TabBar } from "react-native-tab-view";
+import { savedState, defaultRoute } from "./files/default_struct.js";
+import { appStyle } from "./files/styles.js";
 import {
   MyListItem,
   CustomMenu,
@@ -22,25 +22,22 @@ import {
   SortBar,
   TxtButton,
   ImgButton,
-  CustomModal,
-} from './files/components.js';
+  CustomModal
+} from "./files/components.js";
 import {
   nFormatter,
   fetcher,
   mapCreate,
   updateTab,
-  sortRouter,
-} from './files/functions.js';
-import { loc } from './files/locales.js';
-import { objMap } from './files/objMap.js';
+  sortRouter
+} from "./files/functions.js";
+import { loc } from "./files/locales.js";
+import { objMap } from "./files/objMap.js";
+
 const styles = StyleSheet.create(appStyle);
 
 let canJump = true;
 export default class DynamicExample extends Component {
-  static propTypes = {
-    style: View.propTypes.style,
-  };
-
   constructor(props) {
     super(props);
   }
@@ -53,50 +50,60 @@ export default class DynamicExample extends Component {
     sort: 3,
     modalKey: -1,
     favorites: false,
-    lang: 'ru',
-    modal: false,
+    lang: "ru",
+    modal: false
   };
 
-  changeFav(key){
-
-    let routes=[...this.state.routes];
-    let quote=routes[this.state.index].quotes;
-    let i = quote.find(item=>item.key===key)
-    if(i!=undefined){
-      i.favorite=!i.favorite;
+  changeFav(key) {
+    let routes = [...this.state.routes];
+    let quote = routes[this.state.index].quotes;
+    let i = quote.find(item => item.key === key);
+    if (i != undefined) {
+      i.favorite = !i.favorite;
     }
-    this.setState({routes:routes,modal:false});
+    this.setState({ routes: routes, modal: false });
   }
 
   openModal(item) {
-    if(item==="lang"){
-      console.log("1");
-      this.modalParam.objects=[
-        { text: "Русский", pic: 'dot-single',func: ()=>this.setState({lang:"ru",modal:false}) },
-        { text: "English", pic: 'dot-single',func: ()=>this.setState({lang:"en",modal:false}) }
-        ]
-    }else{
-      console.log("2");
-    this.modalParam.key = item.key;
-    this.modalParam.objects = [
-      item.favorite
-        ? {
-            text: loc[this.state.lang].rmFav,
-            pic: 'star',
-            func:  ()=>this.changeFav(item.key)
+    if (item === "lang") {
+      this.modalParam.objects = [
+        {
+          text: "Русский",
+          func: () => this.setState({ lang: "ru", modal: false })
+        },
+        {
+          text: "English",
+          func: () => this.setState({ lang: "en", modal: false })
+        }
+      ];
+    } else {
+      this.modalParam.key = item.key;
+      this.modalParam.objects = [
+        item.favorite
+          ? {
+              text: loc[this.state.lang].rmFav,
+              func: () => this.changeFav(item.key)
+            }
+          : {
+              text: loc[this.state.lang].addFav,
+              func: () => this.changeFav(item.key)
+            },
+        {
+          text: loc[this.state.lang].info,
+          func: () => {
+            alert(loc[this.state.lang].alertInfo);
           }
-        : { text: loc[this.state.lang].addFav, pic: 'star-outlined',func: ()=>this.changeFav(item.key) },
-      { text: loc[this.state.lang].info, pic: 'info',func:()=>{alert(loc[this.state.lang].alertInfo)}},
-    ];
+        }
+      ];
     }
-    this.setState({modal:true});  
-    }
-  
+    this.setState({ modal: true });
+  }
+
   modalParam = {
     key: -1,
-    objects: [],
+    objects: []
   };
-  
+
   componentDidMount() {
     savedState.forEach(item => {
       objMap[item.key] = {};
@@ -114,15 +121,15 @@ export default class DynamicExample extends Component {
   };
 
   _renderHeader = props => {
-    let req = require('./img/starempty.png');
+    let req = require("./files/img/starempty.png");
     if (this.state.favorites) {
-      req = require('./img/star.png');
+      req = require("./files/img/star.png");
     }
     return (
       <View style={{ flex: 0 }}>
         <View style={styles.toolbar}>
           <View style={{ padding: 10 }}>
-            <Text style={{ fontSize: 22, color: 'white' }}>DEX Wallet</Text>
+            <Text style={{ fontSize: 22, color: "white" }}>DEX Wallet</Text>
           </View>
           <CustomMenu
             donateUs={loc[this.state.lang].donateUs}
@@ -132,7 +139,7 @@ export default class DynamicExample extends Component {
             }}
             func={() => {
               this.setState(prevState => ({
-                favorites: !prevState.favorites,
+                favorites: !prevState.favorites
               }));
             }}
             star={req}
@@ -164,8 +171,8 @@ export default class DynamicExample extends Component {
 
   _renderFooter = props => {
     let items = [
-      { req: require('./img/list.png'), func: () => {} },
-      { req: require('./img/info.png'), func: () => {} },
+      { req: require("./files/img/list.png"), func: () => {} },
+      { req: require("./files/img/info.png"), func: () => {} }
     ];
     return <Footer items={items} />;
   };
@@ -203,16 +210,18 @@ export default class DynamicExample extends Component {
             <View
               style={{
                 flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
               <Text
                 style={{
                   marginTop: 100,
                   fontSize: 24,
-                  color: 'gray',
-                  fontWeight: 'bold',
-                }}>
+                  color: "gray",
+                  fontWeight: "bold"
+                }}
+              >
                 {this.state.favorites
                   ? loc[this.state.lang].noFav
                   : loc[this.state.lang].noItems}
@@ -223,7 +232,7 @@ export default class DynamicExample extends Component {
           renderItem={({ item }) => {
             let styleItem = Object.assign({}, StyleSheet.flatten(styles.item));
             if (item.favorite == true) {
-              styleItem.backgroundColor = '#effbc4';
+              styleItem.backgroundColor = "#effbc4";
             }
             return (
               <MyListItem
@@ -271,7 +280,7 @@ export default class DynamicExample extends Component {
   }
 
   render() {
-    console.log('render');
+    console.log("render");
     return (
       <View style={styles.maincontainer}>
         <CustomModal

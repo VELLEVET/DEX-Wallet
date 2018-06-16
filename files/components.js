@@ -1,40 +1,42 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
   Image,
-  TouchableHighlight
-} from "react-native";
-import Icon from "react-native-vector-icons/Entypo";
-import { appStyle } from "./styles.js";
-import Menu, { MenuItem, MenuDivider } from "react-native-material-menu";
-import { loc } from "./locales.js";
+  TouchableHighlight,
+} from 'react-native';
+import { appStyle } from './styles.js';
+import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
+import { loc } from './locales.js';
 const styles = StyleSheet.create(appStyle);
 
 export class CustomModal extends Component {
   render() {
-    let arr = this.props.objects.map((item, index) => (
-      <Icon.Button
+    let arr = this.props.objects.map((item,index) => (
+
+      <TouchableOpacity
+        style={{margin:5}}
         key={index}
-        onPress={item.func}
-        name={item.pic}
-        backgroundColor="white"
-        color="black"
+        onPress={() => item.func()}
       >
-        <Text style={{ fontSize: 20, color: "black" }}>{item.text}</Text>
-      </Icon.Button>
+        <Text style={{fontSize:20}}>{"• "+item.text}</Text>
+      </TouchableOpacity>
+
     ));
 
-    return !this.props.on ? null : (
-      <View style={styles.modalmain}>
-        <TouchableOpacity onPress={this.props.dim} style={styles.touch} />
-        <View style={styles.dim} />
+    return !this.props.on
+      ? null
+      : <View style={styles.modalmain}>
+          <TouchableOpacity onPress={this.props.dim} style={styles.touch} />
+          <View style={styles.dim} />
 
-        <View style={styles.modal}>{arr}</View>
-      </View>
-    );
+          <View style={styles.modal}>
+            {arr}
+
+          </View>
+        </View>;
   }
 }
 
@@ -42,21 +44,21 @@ export class MyListItem extends Component {
   render() {
     let colorized = () => {
       let change = this.props.percent_change;
-      if (change === "0%") {
+      if (change === '0%') {
         return (
-          <Text style={{ color: "gray", fontSize: 14, alignSelf: "flex-end" }}>
+          <Text style={{ color: 'gray', fontSize: 14, alignSelf: 'flex-end' }}>
             0.0%
           </Text>
         );
-      } else if (change.includes("-")) {
+      } else if (change.includes('-')) {
         return (
-          <Text style={{ color: "red", fontSize: 14, alignSelf: "flex-end" }}>
+          <Text style={{ color: 'red', fontSize: 14, alignSelf: 'flex-end' }}>
             {change}
           </Text>
         );
       } else {
         return (
-          <Text style={{ color: "green", fontSize: 14, alignSelf: "flex-end" }}>
+          <Text style={{ color: 'green', fontSize: 14, alignSelf: 'flex-end' }}>
             +{change}
           </Text>
         );
@@ -66,30 +68,27 @@ export class MyListItem extends Component {
     let title = this.props.title;
 
     let titleSplitter = () => {
-      if (title.includes(".")) {
-        let tit = title.split(".");
+      if (title.includes('.')) {
+        let tit = title.split('.');
         return (
           <View
             style={{
               flex: 2,
-              flexDirection: "row",
-              alignItems: "baseline",
-              alignSelf: "stretch"
-            }}
-          >
+              flexDirection: 'row',
+              alignItems: 'baseline',
+              alignSelf: 'stretch',
+            }}>
             <Text
               style={{
-                fontSize: 9
-              }}
-            >
+                fontSize: 9,
+              }}>
               {tit[0]}
             </Text>
             <Text
               style={{
-                fontWeight: "600",
-                height: 18
-              }}
-            >
+                fontWeight: '600',
+                height: 18,
+              }}>
               .{tit[1]}
             </Text>
           </View>
@@ -98,10 +97,9 @@ export class MyListItem extends Component {
         return (
           <View
             style={{
-              flex: 2
-            }}
-          >
-            <Text style={{ fontWeight: "600" }}>{title}</Text>
+              flex: 2,
+            }}>
+            <Text style={{ fontWeight: '600' }}>{title}</Text>
           </View>
         );
       }
@@ -111,16 +109,14 @@ export class MyListItem extends Component {
       <TouchableHighlight
         onPress={this.props.press}
         onLongPress={this.props.longpress}
-        underlayColor="white"
-      >
+        underlayColor="white">
         <View style={this.props.style}>
           <View
             style={{
-              flex: 8
-            }}
-          >
+              flex: 8,
+            }}>
             {titleSplitter(title)}
-            <View style={{ alignSelf: "flex-start" }}>
+            <View style={{ alignSelf: 'flex-start' }}>
               <Text style={{ fontSize: 10 }}>
                 {new Date(this.props.time).toLocaleTimeString()}
               </Text>
@@ -129,24 +125,23 @@ export class MyListItem extends Component {
 
           <View
             style={{
-              flex: 6
-            }}
-          >
-            <Text style={{ fontSize: 14, alignSelf: "flex-end" }}>
+              flex: 6,
+            }}>
+            <Text style={{ fontSize: 14, alignSelf: 'flex-end' }}>
               {this.props.latest}
             </Text>
             {colorized()}
           </View>
           <View
             style={{
-              flex: 4
-            }}
-          >
-            <Text style={{ fontSize: 14, alignSelf: "flex-end" }}>
+              flex: 4,
+            }}>
+            <Text style={{ fontSize: 14, alignSelf: 'flex-end' }}>
               {this.props.base_volume}
             </Text>
           </View>
         </View>
+
       </TouchableHighlight>
     );
   }
@@ -167,10 +162,10 @@ export class CustomMenu extends Component {
   showMenu = () => {
     this._menu.show();
   };
-
+  
   render() {
     return (
-      <View style={{ padding: 10, flexDirection: "row", alignItems: "center" }}>
+      <View style={{ padding: 10, flexDirection: 'row', alignItems: 'center' }}>
         <TouchableHighlight onPress={this.props.func}>
           <Image
             style={{ width: 27, height: 27, marginEnd: 15 }}
@@ -183,21 +178,21 @@ export class CustomMenu extends Component {
             <TouchableHighlight onPress={this.showMenu}>
               <Image
                 style={{ width: 27, height: 27 }}
-                source={require("../img/menu.png")}
+                source={require('./img/menu.png')}
               />
             </TouchableHighlight>
-          }
-        >
+          }>
           <MenuItem
             onPress={() => {
               this.props.langmenu();
               this._menu.hide();
-            }}
-          >
+            }}>
             {this.props.langtext}
           </MenuItem>
           <MenuDivider />
-          <MenuItem onPress={this.hideMenu}>{this.props.donateUs}</MenuItem>
+          <MenuItem onPress={this.hideMenu}>
+            {this.props.donateUs}
+          </MenuItem>
         </Menu>
       </View>
     );
@@ -227,17 +222,15 @@ export class Loading extends Component {
       <View
         style={{
           flex: 1,
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
         <Text
           style={{
-            color: "#2F4F4F",
+            color: '#2F4F4F',
             fontSize: 45,
-            fontWeight: "bold"
-          }}
-        >
+            fontWeight: 'bold',
+          }}>
           DEX Wallet
         </Text>
         <Text style={{ fontSize: 18 }}>loading...</Text>
@@ -256,36 +249,36 @@ export class SortBar extends Component {
       loc[lang].sortName,
       loc[lang].sortPrice,
       loc[lang].sortChange,
-      loc[lang].sortVolume
+      loc[lang].sortVolume,
     ];
     let buttMap = buttons.map((item, index) => {
-      let txtstyle = { alignSelf: "center", color: "white" };
+      let txtstyle = { alignSelf: 'center', color: 'white' };
       let style = {};
       if (index == hoverbut || index == hoverbut - 100)
-        txtstyle.color = "yellow";
+        txtstyle.color = 'yellow';
       if (index == 0) {
-        txtstyle.alignSelf = "flex-start";
+        txtstyle.alignSelf = 'flex-start';
         style.marginStart = 5;
         style.flex = 8;
         // style.borderStyle = 'solid';
         // style.borderTopWidth = 1;
       }
       if (index == 1) {
-        txtstyle.alignSelf = "flex-end";
+        txtstyle.alignSelf = 'flex-end';
         style.flex = 3;
         // style.borderStyle = 'solid';
         // style.borderTopWidth = 2;
         // style.borderTopColor = 'blue';
       }
       if (index == 2) {
-        txtstyle.alignSelf = "flex-end";
+        txtstyle.alignSelf = 'flex-end';
         style.flex = 3;
         // style.borderStyle = 'solid';
         // style.borderTopWidth = 2;
         // style.borderTopColor = 'yellow';
       }
       if (index == 3) {
-        txtstyle.alignSelf = "flex-end";
+        txtstyle.alignSelf = 'flex-end';
         style.flex = 4;
         style.marginEnd = 5;
         // style.borderStyle = 'solid';
@@ -293,9 +286,9 @@ export class SortBar extends Component {
         // style.borderTopColor = 'red';
       }
       if (hoverbut == index) {
-        item = item + "▼";
+        item = item + '▼';
       } else if (hoverbut - 100 == index) {
-        item = item + "▲";
+        item = item + '▲';
       }
 
       return (
@@ -315,11 +308,10 @@ export class SortBar extends Component {
         style={{
           flex: 0,
           height: 30,
-          flexDirection: "row",
-          alignItems: "center",
-          backgroundColor: "#1f3c03"
-        }}
-      >
+          flexDirection: 'row',
+          alignItems: 'center',
+          backgroundColor: '#1f3c03',
+        }}>
         {buttMap}
       </View>
     );
@@ -345,8 +337,7 @@ export class ImgButton extends Component {
     return (
       <TouchableOpacity
         style={this.props.touchstyle}
-        onPress={id == undefined ? this.props.func : this.props.func(id)}
-      >
+        onPress={id == undefined ? this.props.func : this.props.func(id)}>
         <Image style={this.props.imgstyle} source={this.props.source} />
       </TouchableOpacity>
     );
