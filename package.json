@@ -23,6 +23,7 @@
     "react": "16.3.1",
     "react-native": "~0.55.2",
     "react-native-gesture-handler": "^1.0.0-alpha.43",
+    "react-native-material-menu": "^0.3.1",
     "react-native-tab-view": "^0.0.77"
   }
 }
