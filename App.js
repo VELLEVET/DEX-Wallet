@@ -9,7 +9,8 @@ import {
   Image,
   RefreshControl,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  Dimensions
 } from "react-native";
 import { TabViewAnimated, TabBar } from "react-native-tab-view";
 import { savedState, defaultRoute } from "./files/default_struct.js";
@@ -158,6 +159,7 @@ export default class DynamicExample extends Component {
           lang={this.state.lang}
           func={this.sortTab}
           hoverbut={this.state.sort}
+          fontsize={12}
         />
       </View>
     );
@@ -187,7 +189,7 @@ export default class DynamicExample extends Component {
   }
 
   _renderScene = ({ route }) => {
-    let qts = [...this.state.routes[this.state.index].quotes];
+    let qts = [...route.quotes];
     if (this.state.favorites) {
       qts = qts.filter(item => item.favorite);
     }
