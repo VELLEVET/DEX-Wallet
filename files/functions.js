@@ -1,15 +1,15 @@
-import { savedState } from './default_struct.js';
-import {objMap}  from './objMap.js';
+import { savedState } from "./default_struct.js";
+import { objMap } from "./objMap.js";
 
 export function nFormatter(num, digits) {
   var si = [
-    { value: 1, symbol: '' },
-    { value: 1e3, symbol: 'k' },
-    { value: 1e6, symbol: 'M' },
-    { value: 1e9, symbol: 'B' },
-    { value: 1e12, symbol: 'T' },
-    { value: 1e15, symbol: 'P' },
-    { value: 1e18, symbol: 'E' },
+    { value: 1, symbol: "" },
+    { value: 1e3, symbol: "k" },
+    { value: 1e6, symbol: "M" },
+    { value: 1e9, symbol: "B" },
+    { value: 1e12, symbol: "T" },
+    { value: 1e15, symbol: "P" },
+    { value: 1e18, symbol: "E" }
   ];
   var rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
   var i;
@@ -18,28 +18,28 @@ export function nFormatter(num, digits) {
       break;
     }
   }
-  return (num / si[i].value).toFixed(digits).replace(rx, '$1') + si[i].symbol;
+  return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
 }
 
 function fetcher(id, method, params) {
-  return fetch('https://api-ru.bts.blckchnd.com', {
-    method: 'post',
+  return fetch("https://api.bts.blckchnd.com", {
+    method: "post",
     headers: {
-      Accept: 'application/json, text/plain, */*',
-      'Content-Type': 'application/json',
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      jsonrpc: '2.0',
+      jsonrpc: "2.0",
       id: id,
       method: method,
-      params: params,
-    }),
+      params: params
+    })
   }).then(result => result.json());
 }
 
 function fetchData() {
   let count = -1;
-  let value = '';
+  let value = "";
 
   let newSS = savedState
     .reduce((acc, { key, quotes }) => {
@@ -51,9 +51,9 @@ function fetchData() {
         count++;
         value = pair.key;
       }
-      return fetcher(count, 'get_ticker', [
-        '1.3.' + pair.key,
-        '1.3.' + pair.quote,
+      return fetcher(count, "get_ticker", [
+        "1.3." + pair.key,
+        "1.3." + pair.quote
       ]);
     });
 
@@ -71,13 +71,13 @@ const fetchSavedState = () =>
         arri.push({
           title: objMap[bNum].symbol,
           key: bNum,
-          quotes: [],
+          quotes: []
         });
         count++;
       }
 
       arri[count].quotes.push({
-        percent_change: item.result.percent_change + '%',
+        percent_change: item.result.percent_change + "%",
         base_volume: item.result.base_volume,
         latest: parseFloat(
           Number(item.result.latest).toFixed(objMap[bNum].precision)
@@ -85,15 +85,15 @@ const fetchSavedState = () =>
         title: objMap[qNum].symbol,
         key: qNum,
         time: item.result.time,
-        favorite:false
+        favorite: false
       });
     });
     return { routes: arri, loading: false, refreshing: false };
   });
 
 export function mapCreate() {
-  return fetcher(1, 'get_assets', [
-    Object.keys(objMap).map(item => '1.3.' + item),
+  return fetcher(1, "get_assets", [
+    Object.keys(objMap).map(item => "1.3." + item)
   ])
     .then(result2 => {
       result2.result.forEach(item => {
@@ -102,19 +102,19 @@ export function mapCreate() {
     })
     .then(fetchSavedState)
     .catch(error => {
-      alert('Network error!');
+      alert("Network error!");
       console.error(error);
     });
 }
 
 export function updateTab(index, stateRoutes) {
-  console.log('Updating tab...');
+  console.log("Updating tab...");
 
   let currentRoute = [...savedState][index];
   let routes = [...stateRoutes];
   return Promise.all(
     currentRoute.quotes.map(quote =>
-      fetcher(1, 'get_ticker', ['1.3.' + currentRoute.key, '1.3.' + quote])
+      fetcher(1, "get_ticker", ["1.3." + currentRoute.key, "1.3." + quote])
     )
   )
     .then(items => {
@@ -123,7 +123,7 @@ export function updateTab(index, stateRoutes) {
         let qKey = items[i].result.quote.slice(4);
         let bKey = items[i].result.base.slice(4);
         routObj.key = qKey;
-        routObj.percent_change = items[i].result.percent_change + '%';
+        routObj.percent_change = items[i].result.percent_change + "%";
         routObj.latest = Number(items[i].result.latest).toFixed(
           objMap[bKey].precision
         );
@@ -134,11 +134,11 @@ export function updateTab(index, stateRoutes) {
     .then(() => {
       return {
         routes: routes,
-        refreshing: false,
+        refreshing: false
       };
     })
     .catch(error => {
-      alert('Network error.');
+      alert("Network error.");
       console.error(error);
     });
 }
@@ -159,7 +159,7 @@ export function sortRouter(index) {
     (a, b) => f(b.title, a.title),
     (a, b) => f(parseFloat(a.latest), parseFloat(b.latest)),
     (a, b) => f(parseFloat(a.percent_change), parseFloat(b.percent_change)),
-    (a, b) => f(parseFloat(a.base_volume), parseFloat(b.base_volume)),
+    (a, b) => f(parseFloat(a.base_volume), parseFloat(b.base_volume))
   ];
   if (index > 99) {
     f = sortyBack;
