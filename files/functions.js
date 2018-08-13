@@ -1,5 +1,7 @@
 import { savedState } from "./default_struct.js";
 import { objMap } from "./objMap.js";
+import React, { Component } from "react";
+import { Text } from "react-native";
 
 export function nFormatter(num, digits) {
   var si = [
@@ -21,11 +23,10 @@ export function nFormatter(num, digits) {
   return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
 }
 
-function fetcher(id, method, params) {
+export function fetcher(id, method, params) {
   return fetch("https://api.bts.blckchnd.com", {
     method: "post",
     headers: {
-      Accept: "application/json, text/plain, */*",
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
@@ -77,7 +78,7 @@ const fetchSavedState = () =>
       }
 
       arri[count].quotes.push({
-        percent_change: item.result.percent_change + "%",
+        percent_change: item.result.percent_change,
         base_volume: item.result.base_volume,
         latest: parseFloat(
           Number(item.result.latest).toFixed(objMap[bNum].precision)
@@ -107,6 +108,23 @@ export function mapCreate() {
     });
 }
 
+export function getColorPercent(change, styles) {
+  if (change === "0") {
+    return <Text style={{ ...styles, color: "gray" }}>0.0%</Text>;
+  } else if (change.includes("-")) {
+    return <Text style={{ ...styles, color: "red" }}>{change}</Text>;
+  } else {
+    return <Text style={{ ...styles, color: "green" }}>+{change}</Text>;
+  }
+}
+
+export function formula(key1, key2, first, second) {
+  return (
+    first /
+    Math.pow(10, objMap[key1.substr(4)].precision) /
+    (second / Math.pow(10, objMap[key2.substr(4)].precision))
+  );
+}
 export function updateTab(index, stateRoutes) {
   console.log("Updating tab...");
 

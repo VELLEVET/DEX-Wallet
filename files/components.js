@@ -5,11 +5,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  TouchableHighlight
+  TouchableHighlight,
+  Button
 } from "react-native";
 import { appStyle } from "./styles.js";
 import Menu, { MenuItem, MenuDivider } from "react-native-material-menu";
 import { loc } from "./locales.js";
+import { getColorPercent } from "./functions.js";
 const styles = StyleSheet.create(appStyle);
 
 export class CustomModal extends Component {
@@ -37,28 +39,28 @@ export class CustomModal extends Component {
 
 export class MyListItem extends Component {
   render() {
-    let colorized = () => {
-      let change = this.props.percent_change;
-      if (change === "0%") {
-        return (
-          <Text style={{ color: "gray", fontSize: 14, alignSelf: "flex-end" }}>
-            0.0%
-          </Text>
-        );
-      } else if (change.includes("-")) {
-        return (
-          <Text style={{ color: "red", fontSize: 14, alignSelf: "flex-end" }}>
-            {change}
-          </Text>
-        );
-      } else {
-        return (
-          <Text style={{ color: "green", fontSize: 14, alignSelf: "flex-end" }}>
-            +{change}
-          </Text>
-        );
-      }
-    };
+    // let colorized = () => {
+    //   let change = this.props.percent_change;
+    //   if (change === "0") {
+    //     return (
+    //       <Text style={{ color: "gray", fontSize: 14, alignSelf: "flex-end" }}>
+    //         0.0%
+    //       </Text>
+    //     );
+    //   } else if (change.includes("-")) {
+    //     return (
+    //       <Text style={{ color: "red", fontSize: 14, alignSelf: "flex-end" }}>
+    //         {change}
+    //       </Text>
+    //     );
+    //   } else {
+    //     return (
+    //       <Text style={{ color: "green", fontSize: 14, alignSelf: "flex-end" }}>
+    //         +{change}
+    //       </Text>
+    //     );
+    //   }
+    // };
 
     let title = this.props.title;
 
@@ -132,7 +134,10 @@ export class MyListItem extends Component {
             <Text style={{ fontSize: 14, alignSelf: "flex-end" }}>
               {this.props.latest}
             </Text>
-            {colorized()}
+            {getColorPercent(this.props.percent_change, {
+              fontSize: 14,
+              alignSelf: "flex-end"
+            })}
           </View>
           <View
             style={{
@@ -168,12 +173,14 @@ export class CustomMenu extends Component {
   render() {
     return (
       <View style={{ padding: 10, flexDirection: "row", alignItems: "center" }}>
-        <TouchableHighlight onPress={this.props.func}>
-          <Image
-            style={{ width: 27, height: 27, marginEnd: 15 }}
-            source={this.props.star}
-          />
-        </TouchableHighlight>
+        {this.props.star == undefined ? null : (
+          <TouchableHighlight onPress={this.props.func}>
+            <Image
+              style={{ width: 27, height: 27, marginEnd: 15 }}
+              source={this.props.star}
+            />
+          </TouchableHighlight>
+        )}
         <Menu
           ref={this.setMenuRef}
           button={
