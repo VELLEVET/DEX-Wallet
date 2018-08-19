@@ -24,7 +24,7 @@ export function nFormatter(num, digits) {
 }
 
 export function fetcher(id, method, params) {
-  return fetch("https://api.bts.blckchnd.com", {
+  return fetch("https://api-ru.bts.blckchnd.com", {
     method: "post",
     headers: {
       "Content-Type": "application/json"
@@ -35,7 +35,12 @@ export function fetcher(id, method, params) {
       method: method,
       params: params
     })
-  }).then(result => result.json());
+  })
+    .then(result => result.json())
+    .catch(error => {
+      alert("Network error!");
+      console.error("fetcherError: " + error);
+    });
 }
 
 function fetchData() {
@@ -62,35 +67,40 @@ function fetchData() {
 }
 
 const fetchSavedState = () =>
-  fetchData(savedState).then(items => {
-    let count = -1;
-    let arri = [];
-    items.forEach(item => {
-      let qNum = item.result.quote.slice(4);
-      let bNum = item.result.base.slice(4);
-      if (item.id > count) {
-        arri.push({
-          title: objMap[bNum].symbol,
-          key: bNum,
-          quotes: []
-        });
-        count++;
-      }
+  fetchData(savedState)
+    .then(items => {
+      let count = -1;
+      let arri = [];
+      items.forEach(item => {
+        let qNum = item.result.quote.slice(4);
+        let bNum = item.result.base.slice(4);
+        if (item.id > count) {
+          arri.push({
+            title: objMap[bNum].symbol,
+            key: bNum,
+            quotes: []
+          });
+          count++;
+        }
 
-      arri[count].quotes.push({
-        percent_change: item.result.percent_change,
-        base_volume: item.result.base_volume,
-        latest: parseFloat(
-          Number(item.result.latest).toFixed(objMap[bNum].precision)
-        ),
-        title: objMap[qNum].symbol,
-        key: qNum,
-        time: item.result.time,
-        favorite: false
+        arri[count].quotes.push({
+          percent_change: item.result.percent_change,
+          base_volume: item.result.base_volume,
+          latest: parseFloat(
+            Number(item.result.latest).toFixed(objMap[bNum].precision)
+          ),
+          title: objMap[qNum].symbol,
+          key: qNum,
+          time: item.result.time,
+          favorite: false
+        });
       });
+      return { routes: arri, loading: false, refreshing: false };
+    })
+    .catch(error => {
+      alert("Network error!");
+      console.error("fetchSavedStateError: " + error);
     });
-    return { routes: arri, loading: false, refreshing: false };
-  });
 
 export function mapCreate() {
   return fetcher(1, "get_assets", [
@@ -104,7 +114,7 @@ export function mapCreate() {
     .then(fetchSavedState)
     .catch(error => {
       alert("Network error!");
-      console.error(error);
+      console.error("mapCreateError: " + error);
     });
 }
 
@@ -112,9 +122,9 @@ export function getColorPercent(change, styles) {
   if (change === "0") {
     return <Text style={{ ...styles, color: "gray" }}>0.0%</Text>;
   } else if (change.includes("-")) {
-    return <Text style={{ ...styles, color: "red" }}>{change}</Text>;
+    return <Text style={{ ...styles, color: "red" }}>{change}%</Text>;
   } else {
-    return <Text style={{ ...styles, color: "green" }}>+{change}</Text>;
+    return <Text style={{ ...styles, color: "green" }}>+{change}%</Text>;
   }
 }
 

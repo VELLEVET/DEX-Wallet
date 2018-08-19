@@ -64,7 +64,7 @@ export default class DynamicExample extends Component {
     modal: false,
     key1: -1,
     key2: 0,
-    rotate: true,
+    rotate: false,
     legend: {
       enabled: false
     },
@@ -77,9 +77,18 @@ export default class DynamicExample extends Component {
       dataSets: [
         {
           values: [
-            { shadowH: 101.76, shadowL: 100.4, open: 100.78, close: 101.03 },
-            { shadowH: 101.58, shadowL: 100.27, open: 101.31, close: 101.12 },
-            { shadowH: 102.24, shadowL: 100.15, open: 101.41, close: 101.17 }
+            {
+              shadowH: 0.089,
+              shadowL: 0.092,
+              open: 0.089,
+              close: 0.092
+            },
+            {
+              shadowH: 0.091,
+              shadowL: 0.094,
+              open: 0.091,
+              close: 0.094
+            }
           ],
           label: "aaa",
           config: {
@@ -114,11 +123,31 @@ export default class DynamicExample extends Component {
       this.modalParam.objects = [
         {
           text: "Русский",
-          func: () => this.setState({ lang: "ru", modal: false })
+          func: () => {
+            moment.locale("ru");
+            this.setState({
+              lang: "ru",
+              modal: false,
+              routes:
+                this.state.key1 != -1
+                  ? [{ key: "first", title: "График" }]
+                  : this.state.routes
+            });
+          }
         },
         {
           text: "English",
-          func: () => this.setState({ lang: "en", modal: false })
+          func: () => {
+            moment.locale("en");
+            this.setState({
+              lang: "en",
+              modal: false,
+              routes:
+                this.state.key1 != -1
+                  ? [{ key: "first", title: "Chart" }]
+                  : this.state.routes
+            });
+          }
         }
       ];
     } else {
@@ -150,7 +179,6 @@ export default class DynamicExample extends Component {
   };
 
   componentDidMount() {
-    moment.locale("ru");
     savedState.forEach(item => {
       objMap[item.key] = {};
       item.quotes.forEach(quote => {
@@ -172,6 +200,7 @@ export default class DynamicExample extends Component {
       req = require("./files/img/star.png");
     }
     if (this.state.key1 != -1) {
+      reqswap = require("./files/img/swap.png");
       return (
         <View style={{ flex: 0 }}>
           <View style={styles.toolbar}>
@@ -183,7 +212,7 @@ export default class DynamicExample extends Component {
               }}
             >
               <Button
-                title="back"
+                title={loc[this.state.lang].back}
                 onPress={() =>
                   this.setState({ key1: -1, routes: this.state.routestwo })
                 }
@@ -196,9 +225,9 @@ export default class DynamicExample extends Component {
                   paddingLeft: 10
                 }}
               >
-                {objMap[this.state.key1.substr(4)].symbol +
+                {objMap[this.state.key2.substr(4)].symbol +
                   " - " +
-                  objMap[this.state.key2.substr(4)].symbol}
+                  objMap[this.state.key1.substr(4)].symbol}
               </Text>
             </View>
             <CustomMenu
@@ -207,6 +236,8 @@ export default class DynamicExample extends Component {
               langmenu={() => {
                 this.openModal("lang");
               }}
+              func={() => this.updateChart(true)}
+              star={reqswap}
             />
           </View>
 
@@ -260,13 +291,19 @@ export default class DynamicExample extends Component {
     );
   };
 
-  updateChart = () => {
-    this.buttonPress(this.state.stick);
-    fetcher(1, "get_ticker", [this.state.key1, this.state.key2]).then(item => {
+  updateChart = (flip = false) => {
+    let keyy1 = this.state.key1;
+    let keyy2 = this.state.key2;
+    if (flip) {
+      keyy1 = this.state.key2;
+      keyy2 = this.state.key1;
+    }
+    this.buttonPress(this.state.stick, keyy1, keyy2);
+    fetcher(1, "get_ticker", [keyy1, keyy2]).then(item => {
       this.setState({
         percent: item.result.percent_change,
         price: Number(item.result.latest).toFixed(
-          objMap[this.state.key1.substr(4)].precision
+          objMap[keyy1.substr(4)].precision
         ),
         refreshing: false
       });
@@ -302,15 +339,14 @@ export default class DynamicExample extends Component {
   }
 
   showTheChart = (key1, key2) => {
-    //this.buttonPress(3600, key1, key2);
-
-    this.buttonPress(3600, key1, key2);
+    this.buttonPress(3600, key1, key2, true);
     fetcher(1, "get_ticker", [key1, key2]).then(item => {
       this.setState({
         percent: item.result.percent_change,
         price: Number(item.result.latest).toFixed(
           objMap[key1.substr(4)].precision
-        )
+        ),
+        rotate: false
       });
     });
   };
@@ -330,14 +366,14 @@ export default class DynamicExample extends Component {
     id,
     key1 = this.state.key1,
     key2 = this.state.key2,
-    flip = false
+    first = false
   ) => {
     let date = moment(new Date());
     let currentDate = date.format("YYYY-MM-DDTHH:mm:ss");
     let difDate;
     let str;
     let stick;
-
+    console.log("button press input: key1-" + key1 + ", key2-" + key2);
     if (typeof id === "string") {
       stick = this.state.stick;
       if (id === "1w" && stick == 900) {
@@ -363,7 +399,11 @@ export default class DynamicExample extends Component {
       [key1, key2, stick, difDate, currentDate]
     ])
       .then(obj => {
-        console.log(obj.result.length);
+        if (obj.result[0].key.base !== key1) {
+          // let keyy = key1;
+          // key1 = key2;
+          // key2 = keyy;
+        }
         let o = {
           key1: key1,
           key2: key2,
@@ -375,39 +415,43 @@ export default class DynamicExample extends Component {
               : {
                   dataSets: [
                     {
-                      values: obj.result.map((item, index) => {
-                        let rotate = this.state.rotate;
-                        if (flip) {
-                          rotate = !this.state.rotate;
+                      values: obj.result.map(item => {
+                        let rotate = false;
+                        let key11 = key1;
+                        let key22 = key2;
+                        if (obj.result[0].key.base !== key1) {
+                          key11 = key2;
+                          key22 = key1;
+                          rotate = true;
                         }
+
                         let shadowH = formula(
-                          key1,
-                          key2,
+                          key11,
+                          key22,
                           item.high_base,
                           item.high_quote
                         );
                         let shadowL = formula(
-                          key1,
-                          key2,
+                          key11,
+                          key22,
                           item.low_base,
                           item.low_quote
                         );
                         let open = formula(
-                          key1,
-                          key2,
+                          key11,
+                          key22,
                           item.open_base,
                           item.open_quote
                         );
 
                         let close = formula(
-                          key1,
-                          key2,
+                          key11,
+                          key22,
                           item.close_base,
                           item.close_quote
                         );
 
                         return {
-                          x: index,
                           shadowH: rotate ? 1 / shadowH : shadowH,
                           shadowL: rotate ? 1 / shadowL : shadowL,
                           open: rotate ? 1 / open : open,
@@ -418,7 +462,7 @@ export default class DynamicExample extends Component {
                       label: "aaa",
                       config: {
                         highlightColor: processColor("darkgray"),
-
+                        axisDependency: "RIGHT",
                         shadowColor: processColor("black"),
                         shadowWidth: 1,
                         shadowColorSameAsCandle: true,
@@ -431,9 +475,7 @@ export default class DynamicExample extends Component {
                 },
           xAxis: {
             drawLabels: true,
-
             position: "BOTTOM",
-
             labelCount: 7,
             valueFormatter: obj.result.map(item => {
               let mmt = moment(item.key.open);
@@ -441,14 +483,16 @@ export default class DynamicExample extends Component {
               //mmt.format("MM D") + "/" + mmt.format("HH:mm");
             })
           },
-          yAxis: {}
+          yAxis: {
+            left: {
+              enabled: false
+            }
+          }
         };
-        if (flip == true) {
-          o.rotate = !this.state.rotate;
-        }
+
         if (this.state.key1 === -1) {
           o.routestwo = [...this.state.routes];
-          o.routes = [{ key: "first", title: "График" }];
+          o.routes = [{ key: "first", title: loc[this.state.lang].chart }];
         }
         this.setState(o);
       })
@@ -522,18 +566,10 @@ export default class DynamicExample extends Component {
               bottom: 0
             }}
           />
-          <View style={{ flex: 1, paddingRight: 5 }}>
+          <View style={{ flex: 1 }}>
             <CandleStickChart
               style={{
                 flex: 1
-              }}
-              zoom={{
-                pinchZoom: false,
-                scaleX: 0,
-                scaleY: 0,
-                xValue: 0,
-                yValue: 0,
-                axisDependency: "RIGHT"
               }}
               data={this.state.data}
               marker={{
@@ -542,15 +578,8 @@ export default class DynamicExample extends Component {
               chartDescription={{ text: "" }}
               legend={this.state.legend}
               xAxis={this.state.xAxis}
-              yAxis={{
-                left: {
-                  enabled: false
-                },
-                right: {
-                  enabled: true
-                }
-              }}
-              maxVisibleValueCount={16}
+              yAxis={this.state.yAxis}
+              maxVisibleValueCount={0}
               autoScaleMinMaxEnabled={true}
               onSelect={this.handleSelect.bind(this)}
               ref="chart"
@@ -620,27 +649,12 @@ export default class DynamicExample extends Component {
                 title="24h"
                 color={this.state.stick == 86400 ? "red" : "black"}
               />
-              <View style={{ flex: 0.5, paddingLeft: 20 }}>
-                <Button
-                  onPress={() =>
-                    this.setState(() =>
-                      this.buttonPress(
-                        this.state.date,
-                        this.state.key1,
-                        this.state.key2,
-                        true
-                      )
-                    )
-                  }
-                  title="flip"
-                  color={"black"}
-                />
-              </View>
             </View>
           </View>
         </View>
       );
     }
+
     let qts = [...route.quotes];
     if (this.state.favorites) {
       qts = qts.filter(item => item.favorite);
