@@ -151,7 +151,7 @@ export function updateTab(index, stateRoutes) {
         let qKey = items[i].result.quote.slice(4);
         let bKey = items[i].result.base.slice(4);
         routObj.key = qKey;
-        routObj.percent_change = items[i].result.percent_change + "%";
+        routObj.percent_change = items[i].result.percent_change;
         routObj.latest = Number(items[i].result.latest).toFixed(
           objMap[bKey].precision
         );
