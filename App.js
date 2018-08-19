@@ -357,7 +357,6 @@ export default class DynamicExample extends Component {
       this.setState({ selectedEntry: null });
     } else {
       let mmt = moment(entry.data.marker);
-      //mmt.format("MM D") + "/" + mmt.format("HH:mm");
       this.setState({ selectedEntry: mmt.format("MMM D, HH:mm") });
     }
   }
