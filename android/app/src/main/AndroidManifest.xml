@@ -8,15 +8,16 @@ xmlns:tools="http://schemas.android.com/tools"
     android:name="android.permission.READ_PHONE_STATE"
     tools:node="remove" />
     <application
-      android:name=".MainApplication"
+      android:name="com.dex_wallet.MainApplication"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
       <activity
-        android:name=".MainActivity"
+        android:name="com.dex_wallet.MainActivity"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+        android:screenOrientation="portrait"
         android:windowSoftInputMode="adjustResize">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
