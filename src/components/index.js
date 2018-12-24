@@ -8,10 +8,10 @@ import {
   TouchableHighlight,
   Button
 } from "react-native";
-import { appStyle } from "./styles.js";
+import { appStyle } from "../files/styles.js";
 import Menu, { MenuItem, MenuDivider } from "react-native-material-menu";
-import { loc } from "./locales.js";
-import { getColorPercent } from "./functions.js";
+import { loc } from "../files/locales.js";
+import { getColorPercent } from "../files/functions.js";
 const styles = StyleSheet.create(appStyle);
 
 export class CustomModal extends Component {
@@ -187,7 +187,7 @@ export class CustomMenu extends Component {
             <TouchableHighlight onPress={this.showMenu}>
               <Image
                 style={{ width: 27, height: 27 }}
-                source={require("./img/menu.png")}
+                source={require("../files/img/menu.png")}
               />
             </TouchableHighlight>
           }

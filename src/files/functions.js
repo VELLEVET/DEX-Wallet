@@ -24,7 +24,9 @@ export function nFormatter(num, digits) {
 }
 
 export function fetcher(id, method, params) {
-  return fetch("https://api-ru.bts.blckchnd.com", {
+  // console.log('fetcher',id, method, params )
+  return fetch("https://api.bts.blckchnd.com", {
+  // return fetch("https://api-ru.bts.blckchnd.com", {
     method: "post",
     headers: {
       "Content-Type": "application/json"
@@ -36,9 +38,19 @@ export function fetcher(id, method, params) {
       params: params
     })
   })
-    .then(result => result.json())
+    .then(result =>{
+      // console.log(result)
+      if(result.ok) {
+        return result.json()
+      }else {
+        alert("Network error!");
+
+        return []
+      }
+    })
     .catch(error => {
       alert("Network error!");
+      return []
       console.error("fetcherError: " + error);
     });
 }
@@ -95,6 +107,7 @@ const fetchSavedState = () =>
           favorite: false
         });
       });
+      // console.log(arri)
       return { routes: arri, loading: false, refreshing: false };
     })
     .catch(error => {
@@ -135,6 +148,8 @@ export function formula(key1, key2, first, second) {
     (second / Math.pow(10, objMap[key2.substr(4)].precision))
   );
 }
+
+
 export function updateTab(index, stateRoutes) {
   console.log("Updating tab...");
 

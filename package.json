@@ -1,25 +1,32 @@
 {
-  "name": "dextrading",
+  "name": "DEXTrading",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "sed -i '' 's/#import <RCTAnimation\\/RCTValueAnimatedNode.h>/#import \"RCTValueAnimatedNode.h\"/' ./node_modules/react-native/Libraries/NativeAnimation/RCTNativeAnimatedNodesManager.h"
   },
   "dependencies": {
     "moment": "^2.22.2",
-    "react": "16.3.1",
-    "react-native": "~0.55.2",
-    "react-native-charts-wrapper": "^0.4.3",
-    "react-native-fabric": "^0.5.1",
+    "react": "16.6.3",
+    "react-native": "0.57.8",
+    "react-native-charts-wrapper": "^0.5.0",
+    "react-native-gesture-handler": "^1.0.12",
     "react-native-material-menu": "^0.3.1",
-    "react-native-tab-view": "^0.0.77"
+    "react-native-tab-view": "^0.0.77",
+    "react-navigation": "^3.0.8",
+    "react-navigation-redux-helpers": "^2.0.8",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "babel-jest": "23.0.1",
-    "babel-preset-react-native": "4.0.0",
-    "jest": "23.1.0",
-    "react-test-renderer": "16.3.1"
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.48.5",
+    "react-test-renderer": "16.6.3"
   },
   "jest": {
     "preset": "react-native"

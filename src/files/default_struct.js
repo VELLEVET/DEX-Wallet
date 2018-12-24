@@ -1,5 +1,7 @@
+// id  активово
 const level1 = [0, 103, 113, 119, 120, 121, 1325];
 
+// валютные пары
 const level2 = [
   0,
   103,
@@ -21,6 +23,7 @@ const level2 = [
   2914
 ];
 
+// что то с валютными парами
 export const savedState = level1.map(item => {
   let nObj = {
     key: item,
