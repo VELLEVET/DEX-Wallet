@@ -44,8 +44,6 @@ class CoinDetail extends Component<Props, State> {
         favorites: false,
         lang: "ru",
         modal: false,
-        key1: -1,
-        key2: 0,
         rotate: false,
         legend: {
             enabled: false
@@ -217,9 +215,8 @@ class CoinDetail extends Component<Props, State> {
                                 paddingLeft: 10
                             }}
                         >
-                            {/*{objMap[this.state.key2.substr(4)].symbol +*/}
-                            {/*" - " +*/}
-                            {/*objMap[this.state.key1.substr(4)].symbol}*/}
+
+                            {`${this.state.key2?objMap[this.state.key2.substr(4)].symbol:''} - ${this.state.key1?this.state.key1&& objMap[this.state.key1.substr(4)].symbol:''}`}
                         </Text>
                     </View>
                     <CustomMenu
