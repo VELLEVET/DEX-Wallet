@@ -10,7 +10,7 @@ import {objMap} from "../../files/objMap";
 import moment from "moment";
 import "moment/locale/ru";
 
-import {changeTab, loadCoins, refresh} from '../../actions/coins'
+import {changeTab, loadCoins, refresh, unstarCoin, starCoins, loadStars} from '../../actions/coins'
 import {connect} from "react-redux";
 
 const styles = StyleSheet.create(appStyle);
@@ -48,16 +48,21 @@ class Main extends Component<Props, State> {
         coins:[],
         loading: true,
         refreshing: false,
+        starQuoteKeys:[]
 
     };
     changeFav(key) {
-        let routes = [...this.state.routes];
-        let quote = routes[this.state.index].quotes;
-        let i = quote.find(item => item.key === key);
-        if (i != undefined) {
-            i.favorite = !i.favorite;
+        if(!this.props.starQuoteKeys[this.props.routes[this.props.index].key] ){
+            this.props.starCoins(key, this.props.routes[this.props.index].key)
+        }else if(!this.props.starQuoteKeys[this.props.routes[this.props.index].key][key]){
+            this.props.starCoins(key,this.props.routes[this.props.index].key)
+
+        }else{
+            this.props.unstarCoin(key, this.props.routes[this.props.index].key)
+
         }
-        this.setState({ routes: routes, modal: false });
+        this.setState({ modal: false });
+
     }
 
     openModal(item) {
@@ -121,6 +126,7 @@ class Main extends Component<Props, State> {
                 objMap[quote] = {};
             });
         });
+        this.props.loadStars()
         this.props.loadCoins()
 
     }
@@ -201,8 +207,16 @@ class Main extends Component<Props, State> {
 
         let qts = this.props.coinsByKey[route.key]?this.props.coinsByKey[route.key]:[];
 
-        if (this.state.favorites) {
-            qts = qts.filter(item => item.favorite);
+        if (this.state.favorites ) {
+            // qts = qts.filter(item => this.props.starQuoteKeys[route.key] && this.props.starQuoteKeys[route.key].includes(item.key));
+
+            if(this.props.starQuoteKeys[route.key]){
+                // TODO:  normolaze quotes
+                const stars = Object.keys(this.props.starQuoteKeys[route.key]).filter(key =>this.props.starQuoteKeys[route.key][key])
+                qts = qts.filter(item =>stars.includes(item.key))
+            }else{
+                qts =[]
+            }
         }
         if (this.state.sort != -1 && qts.length > 1) {
             qts.sort(sortRouter(this.state.sort));
@@ -245,7 +259,7 @@ class Main extends Component<Props, State> {
                     keyExtractor={item => item.key}
                     renderItem={({ item }) => {
                         let styleItem = Object.assign({}, StyleSheet.flatten(styles.item));
-                        if (item.favorite == true) {
+                        if (this.props.starQuoteKeys[route.key] && this.props.starQuoteKeys[route.key][item.key]) {
                             styleItem.backgroundColor = "#effbc4";
                         }
                         return (
@@ -316,7 +330,8 @@ const mapStateToProps = (state) => {
         coinsByKey: state.coins.coinsByKey,
         index: state.coins.index,
         loading: state.coins.loading,
+        starQuoteKeys: state.coins.starQuoteKeys
     }
 };
 
-export default connect(mapStateToProps, {loadCoins, changeTab, refresh})(Main)
+export default connect(mapStateToProps, {loadCoins, changeTab, loadStars, refresh, unstarCoin, starCoins})(Main)
