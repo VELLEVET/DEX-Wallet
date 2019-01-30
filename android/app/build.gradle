@@ -100,7 +100,7 @@ android {
         applicationId "com.dex_wallet"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
+        versionCode 9
         versionName "1.0"
         archivesBaseName = "app-v$versionCode"
 
