@@ -13,90 +13,98 @@ export type Quote = {
 }
 
 
-
 //TODO: normolize  coin by key, keys of Quotes by coin, Quote by key
 export type   State = $Exact<{
     +loading: boolean,
-    +refreshing : boolean,
-    +index:number,
+    +refreshing: boolean,
+    +index: number,
     //tabs
-    +routes:Array<{
+    +routes: Array<{
         +key: string,
-        +title: string}>,
+        +title: string
+    }>,
     +coins: Array<{
         +key: string,
         +title: string,
         +quotes: Array<Quote>,
     }>,
-    +coinsByKey:{
-        +[key:string]:Array<Quote>
+    +coinsByKey: {
+        +[key: string]: Array<Quote>
     },
-    +starQuoteKeys:{
-        +[key:string]:{
-            +[key:string]:boolean
+    +starQuoteKeys: {
+        +[key: string]: {
+            +[key: string]: boolean
         }
     }
 }>
-export const init:State ={
+export const init: State = {
     loading: true,
     refreshing: false,
-    index:0,
+    index: 0,
     routes: [
-        { key: '0', title: 'BTS' },
-        { key: '103', title: 'BTC' },
-        { key: '113', title: 'CNY' },
-        { key: '119', title: 'JPY' },
-        { key: '120', title: 'EUR' },
-        { key: '121', title: 'USD' },
-        { key: '1325', title: 'RUBLE' },
+        {key: '0', title: 'BTS'},
+        {key: '103', title: 'BTC'},
+        {key: '113', title: 'CNY'},
+        {key: '119', title: 'JPY'},
+        {key: '120', title: 'EUR'},
+        {key: '121', title: 'USD'},
+        {key: '1325', title: 'RUBLE'},
     ],
-    coins:[],
-    coinsByKey:{},
-    starQuoteKeys:{}
+    coins: [],
+    coinsByKey: {},
+    starQuoteKeys: {},
 
 }
 
 // FIXME: this is temporary solution
 // type Action = {type:string, payload?:Actions}
 
-export default (state:State = init, action:Actions):State => {
-    switch (action.type){
+const getToken = (auth: any):string => auth.token
+
+export default (state: State = init, action: Actions): State => {
+    switch (action.type) {
         case types.GET_COINS_RESPONSE:
-            return {...state,   coins: action.payload,
+            return {
+                ...state, coins: action.payload,
                 // normalize response
                 //TODO: rewrite functions.js
-                coinsByKey: action.payload?action.payload.reduce((obj, item) => {
+                coinsByKey: action.payload ? action.payload.reduce((obj, item) => {
                     obj[item.key] = item.quotes
                     return obj
-                }, {}):{}, loading: false, refreshing: false}
+                }, {}) : {}, loading: false, refreshing: false
+            }
         case types.CHANGE_TAB:
-            return {...state, index:action.payload}
+            return {...state, index: action.payload}
         case types.GET_COINS_REQUEST:
-            return {...state, refreshing:true}
+            return {...state, refreshing: true}
         case types.REFRESH_COINS_RESPONSE:
-            return {...state,   coins: action.payload,
+            return {
+                ...state, coins: action.payload,
                 // normalize response
                 //TODO: rewrite functions.js
-                coinsByKey: action.payload?action.payload.reduce((obj, item) => {
+                coinsByKey: action.payload ? action.payload.reduce((obj, item) => {
                     obj[item.key] = item.quotes
                     return obj
-                }, {}):{}, loading: false, refreshing: false}
+                }, {}) : {}, loading: false, refreshing: false
+            }
         case types.STAR_COIN:
-            return {...state,
-                starQuoteKeys:{
+            return {
+                ...state,
+                starQuoteKeys: {
                     ...state.starQuoteKeys,
-                    [action.payload.coin]:{...state.starQuoteKeys[action.payload.coin], [action.payload.key]:true}
+                    [action.payload.coin]: {...state.starQuoteKeys[action.payload.coin], [action.payload.key]: true}
                 }
             }
         case types.UNSTAR_COIN:
-            return {...state,
-                starQuoteKeys:{
+            return {
+                ...state,
+                starQuoteKeys: {
                     ...state.starQuoteKeys,
-                    [action.payload.coin]:{...state.starQuoteKeys[action.payload.coin], [action.payload.key]:false}
+                    [action.payload.coin]: {...state.starQuoteKeys[action.payload.coin], [action.payload.key]: false}
                 }
             }
         case types.LOAD_STARS:
-            return {...state, starQuoteKeys:action.payload}
+            return {...state, starQuoteKeys: action.payload}
         default:
             return state;
     }

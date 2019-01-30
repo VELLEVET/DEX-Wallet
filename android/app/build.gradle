@@ -73,7 +73,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "types.js"
+    entryFile: "index.js"
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -95,34 +95,40 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.dex_wallet"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
+        versionCode 7
         versionName "1.0"
-        ndk {
-            abiFilters "armeabi-v7a", "x86"
-        }
+        archivesBaseName = "app-v$versionCode"
+
+
     }
     splits {
         abi {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
-            include "armeabi-v7a", "x86"
+            include "armeabi-v7a", "x86", "arm64-v8a"
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file('my-release-key.keystore')
+            storePassword 'ELoeGG'
+            keyAlias 'my-key-alias'
+            keyPassword 'zYbu5p'
+
         }
     }
     buildTypes {
         release {
-            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
-//                storeFile file(MYAPP_RELEASE_STORE_FILE)
-//                storePassword MYAPP_RELEASE_STORE_PASSWORD
-//                keyAlias MYAPP_RELEASE_KEY_ALIAS
-//                keyPassword MYAPP_RELEASE_KEY_PASSWORD
-            }
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
+
         }
     }
     // applicationVariants are e.g. debug, release
@@ -130,7 +136,7 @@ android {
         variant.outputs.each { output ->
             // For each separate APK per architecture, set a unique version code as described here:
             // http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
-            def versionCodes = ["armeabi-v7a":1, "x86":2]
+            def versionCodes = ["armeabi-v7a":1, "x86":2, "arm64-v8a": 3]
             def abi = output.getFilter(OutputFile.ABI)
             if (abi != null) {  // null for the universal-debug, universal-release variants
                 output.versionCodeOverride =
@@ -138,11 +144,12 @@ android {
             }
         }
     }
+    buildToolsVersion '28.0.3'
 }
+
 
 dependencies {
     implementation project(':react-native-gesture-handler')
-    implementation project(':react-native-charts-wrapper')
     implementation project(':react-native-charts-wrapper')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"

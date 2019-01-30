@@ -1,0 +1,4 @@
+#Thu Jan 31 01:06:22 MSK 2019
+base.0=/Users/oleggamega/WebstormProjects/DexApplication/android/app/build/intermediates/transforms/dexMerger/release/0
+path.0=classes.dex
+renamed.0=classes.dex

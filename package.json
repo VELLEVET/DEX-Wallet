@@ -1,18 +1,21 @@
 {
-  "name": "DEXTrading",
+  "name": "DexApplication",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "postinstall": "sed -i '' 's/#import <RCTAnimation\\/RCTValueAnimatedNode.h>/#import \"RCTValueAnimatedNode.h\"/' ./node_modules/react-native/Libraries/NativeAnimation/RCTNativeAnimatedNodesManager.h"
+    "clear":"watchman watch-del-all && rm -rf node_modules/ && yarn cache clean && yarn install && yarn start -- --reset-cache",
+    "g-clean":"cd android && ./gradlew clean",
+    "build":"cd android &&  ./gradlew assembleRelease"
+
   },
   "dependencies": {
     "moment": "^2.22.2",
     "react": "16.6.3",
-    "react-native": "0.57.8",
+    "react-native": "0.58.3",
     "react-native-charts-wrapper": "^0.5.0",
-    "react-native-gesture-handler": "^1.0.12",
+    "react-native-gesture-handler": "^1.0.15",
     "react-native-material-menu": "^0.3.1",
     "react-native-tab-view": "^0.0.77",
     "react-navigation": "^3.0.8",
@@ -21,11 +24,13 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
+
   },
   "devDependencies": {
-    "babel-jest": "23.6.0",
-    "jest": "23.6.0",
-    "metro-react-native-babel-preset": "0.48.5",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "24.0.0",
+    "jest": "24.0.0",
+    "metro-react-native-babel-preset": "0.51.1",
     "react-test-renderer": "16.6.3"
   },
   "jest": {

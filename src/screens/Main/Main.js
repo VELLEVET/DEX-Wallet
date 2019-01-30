@@ -17,20 +17,19 @@ const styles = StyleSheet.create(appStyle);
 
 let canJump = true;
 
-type Props = {
-
-};
+type Props = {};
 type State = {
     index: number,
-    modal:boolean
+    modal: boolean
 };
 
 class Main extends Component<Props, State> {
-    constructor(props:Props) {
+    constructor(props: Props) {
         super(props);
     }
-    static navigationOptions={
-        header:null
+
+    static navigationOptions = {
+        header: null
     }
     state = {
         sort: 3,
@@ -45,23 +44,24 @@ class Main extends Component<Props, State> {
     };
 
     static defaultProps = {
-        coins:[],
+        coins: [],
         loading: true,
         refreshing: false,
-        starQuoteKeys:[]
+        starQuoteKeys: []
 
     };
-    changeFav(key) {
-        if(!this.props.starQuoteKeys[this.props.routes[this.props.index].key] ){
-            this.props.starCoins(key, this.props.routes[this.props.index].key)
-        }else if(!this.props.starQuoteKeys[this.props.routes[this.props.index].key][key]){
-            this.props.starCoins(key,this.props.routes[this.props.index].key)
 
-        }else{
+    changeFav(key) {
+        if (!this.props.starQuoteKeys[this.props.routes[this.props.index].key]) {
+            this.props.starCoins(key, this.props.routes[this.props.index].key)
+        } else if (!this.props.starQuoteKeys[this.props.routes[this.props.index].key][key]) {
+            this.props.starCoins(key, this.props.routes[this.props.index].key)
+
+        } else {
             this.props.unstarCoin(key, this.props.routes[this.props.index].key)
 
         }
-        this.setState({ modal: false });
+        this.setState({modal: false});
 
     }
 
@@ -111,13 +111,14 @@ class Main extends Component<Props, State> {
                 }
             ];
         }
-        this.setState({ modal: true });
+        this.setState({modal: true});
     }
 
     modalParam = {
         key: -1,
         objects: []
     };
+
 
     componentDidMount() {
         savedState.forEach(item => {
@@ -142,10 +143,10 @@ class Main extends Component<Props, State> {
         }
 
         return (
-            <View style={{ flex: 0 }}>
+            <View style={{flex: 0}}>
                 <View style={styles.toolbar}>
-                    <View style={{ padding: 10 }}>
-                        <Text style={{ fontSize: 22, color: "white" }}>DEX Wallet</Text>
+                    <View style={{padding: 10}}>
+                        <Text style={{fontSize: 22, color: "white"}}>DEX Wallet</Text>
                     </View>
                     <CustomMenu
                         donateUs={loc[this.state.lang].donateUs}
@@ -183,10 +184,9 @@ class Main extends Component<Props, State> {
 
     sortTab = id => {
         return this.setState(
-            this.state.sort == id ? { sort: id + 100 } : { sort: id }
+            this.state.sort == id ? {sort: id + 100} : {sort: id}
         );
     };
-
 
 
     _onRefresh() {
@@ -195,27 +195,25 @@ class Main extends Component<Props, State> {
 
     showTheChart = (key1, key2) => {
         console.log('main', key1, key2)
-        this.props.navigation.navigate('CoinDetail', { key1, key2 })
+        this.props.navigation.navigate('CoinDetail', {key1, key2})
     };
 
 
-
-
-    _renderScene = ({ route }) => {
+    _renderScene = ({route}) => {
         console.log('_renderScene', route)
 
 
-        let qts = this.props.coinsByKey[route.key]?this.props.coinsByKey[route.key]:[];
+        let qts = this.props.coinsByKey[route.key] ? this.props.coinsByKey[route.key] : [];
 
-        if (this.state.favorites ) {
+        if (this.state.favorites) {
             // qts = qts.filter(item => this.props.starQuoteKeys[route.key] && this.props.starQuoteKeys[route.key].includes(item.key));
 
-            if(this.props.starQuoteKeys[route.key]){
+            if (this.props.starQuoteKeys[route.key]) {
                 // TODO:  normolaze quotes
-                const stars = Object.keys(this.props.starQuoteKeys[route.key]).filter(key =>this.props.starQuoteKeys[route.key][key])
-                qts = qts.filter(item =>stars.includes(item.key))
-            }else{
-                qts =[]
+                const stars = Object.keys(this.props.starQuoteKeys[route.key]).filter(key => this.props.starQuoteKeys[route.key][key])
+                qts = qts.filter(item => stars.includes(item.key))
+            } else {
+                qts = []
             }
         }
         if (this.state.sort != -1 && qts.length > 1) {
@@ -231,7 +229,7 @@ class Main extends Component<Props, State> {
                             onRefresh={this._onRefresh.bind(this)}
                         />
                     }
-                    ListFooterComponent={<View style={{ height: 40 }} />}
+                    ListFooterComponent={<View style={{height: 40}}/>}
                     style={styles.flatlist}
                     data={qts}
                     ListEmptyComponent={
@@ -257,7 +255,7 @@ class Main extends Component<Props, State> {
                         </View>
                     }
                     keyExtractor={item => item.key}
-                    renderItem={({ item }) => {
+                    renderItem={({item}) => {
                         let styleItem = Object.assign({}, StyleSheet.flatten(styles.item));
                         if (this.props.starQuoteKeys[route.key] && this.props.starQuoteKeys[route.key][item.key]) {
                             styleItem.backgroundColor = "#effbc4";
@@ -288,11 +286,11 @@ class Main extends Component<Props, State> {
 
     renderScreen() {
         if (this.props.loading) {
-            return <Loading />;
+            return <Loading/>;
         } else {
             return (
                 <TabViewAnimated
-                    swipeEnabled={ true}
+                    swipeEnabled={true}
                     canJumpToTab={this.canJumpToTab}
                     style={styles.container}
                     navigationState={this.props}
@@ -304,6 +302,7 @@ class Main extends Component<Props, State> {
             );
         }
     }
+
     canJumpToTab(route) {
         return canJump;
     }
@@ -313,7 +312,7 @@ class Main extends Component<Props, State> {
             <View style={styles.maincontainer}>
                 <CustomModal
                     on={this.state.modal}
-                    dim={() => this.setState({ modal: false })}
+                    dim={() => this.setState({modal: false})}
                     objects={this.modalParam.objects}
                 />
                 {this.renderScreen()}

@@ -1,0 +1,2 @@
+# Referenced at /Users/oleggamega/WebstormProjects/DexApplication/android/app/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:17
+-keep class com.dex_wallet.MainApplication { <init>(...); }
