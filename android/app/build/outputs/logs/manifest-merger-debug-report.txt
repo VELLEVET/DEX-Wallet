@@ -1,212 +1,218 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12
-INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12
-INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12
-INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12
-MERGED from [:react-native-gesture-handler] /Users/oleggamega/WebstormProjects/DexApplication/node_modules/react-native-gesture-handler/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-11:12
-MERGED from [:react-native-charts-wrapper] /Users/oleggamega/WebstormProjects/DexApplication/node_modules/react-native-charts-wrapper/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-11:12
-MERGED from [com.facebook.react:react-native:0.58.3] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/react-native-0.58.3.aar/2929fa22aebe6ac0e7c3a9d819a953d0/AndroidManifest.xml:2:1-15:12
-MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/7db50e25d6542ae8ee26698dcc973ee2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-fragment:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/6b694bfc672dae46804d764967800e65/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/608ede34a48df2facc40016f964b9809/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/8e3fab10e41604d7890c03c53f328898/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/663c338672ce95899d7e029f36629980/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/c45bc6fbc446fe66cf39d93c4c267251/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:loader:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/d7dfea4dc6dbaa1c42687bb1f9e1165d/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:viewpager:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/f8a2e855381d947cde9162d10df3df43/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/becc2ad170f59ce000779d983c7a96e2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:drawerlayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/75839aca036ba3361ae003c9e0c1cd91/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/161e91bebaef44d9866ac23ed77242b6/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:customview:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/24d06ea62afafc99804ba4c89f0da94c/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/18950ceaa044573802e7e6e141326322/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/bcfbe441deaf3b910cde38c7c13aa4b4/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/f8384704169c9428a78ca216e089cda7/AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/89143e17be742fce2766cfd055a08a6f/AndroidManifest.xml:17:1-25:12
-MERGED from [com.android.support:cursoradapter:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/f6a42d1165e03cb392a4d01ea84ed32a/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/600d26896b3e9e1fffae03e491f4a0f3/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:documentfile:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/90eb48c6d31eaf5e3136fdec8ee84194/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/80a5de4ad5ad906c79df4abb142b7b07/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:print:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/cdcda34aec847c2b5861899548d7de1d/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/fd37ee5d6755939bc963f5c5f2a36785/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/69a16f00e6cced821ed2980b243c8d9b/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/e394f6aa1754f4bc7837009e534ef8e2/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.core:runtime:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/f5d880ef47325092dfc0c2e6920ba156/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:interpolator:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/cb4ebbc58649a0ccc610d13b79af1733/AndroidManifest.xml:17:1-22:12
-MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/9f3f9a11424dc3a4f09c181d3b46de9c/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/145c28bddea20d74ba8a6a7b03380de5/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/f57c2de240c74133f7102c3f60a4c0b2/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/563d23a13f8408364ae0e130c1e9c0d3/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/eed0b2808f212de2e8050e39457922cc/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/277fba16848c0fb1cbeaabfac0532a73/AndroidManifest.xml:2:1-13:12
-MERGED from [org.webkit:android-jsc:r174650] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/274d7581dccfc33202cfbe3f16cf45ba/AndroidManifest.xml:1:1-3:12
-MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/830997dee00706d2074ad4cf29a26019/AndroidManifest.xml:2:1-9:12
-INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12
-INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12
-INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12
+ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:1-29:12
+INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:1-29:12
+INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:1-29:12
+INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:1-29:12
+MERGED from [:react-native-gesture-handler] /Users/quartex/Documents/dexWallet/DEX-Wallet/node_modules/react-native-gesture-handler/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-charts-wrapper] /Users/quartex/Documents/dexWallet/DEX-Wallet/node_modules/react-native-charts-wrapper/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/quartex/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/e8bbfc4a837b5bb5a4d05ce7fa16f4bd/AndroidManifest.xml:2:1-15:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/6736053e8ccb74eba3a568d619398a5a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/3fa3c173f5ba934e28cd0850906aed3c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/3b580afc57b5d40e09cd23526320aade/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/640879e823e7d069f199edb4d7745d62/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/71517177b9a7dd373c7b4b1636d8e9f2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/bddab667de7380e3bd32df86d781cd3c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/3771cf47e38bcc99ad6696b70d15e9bd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/15c4780b4ee1be7209c642d8e8ec3186/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/2aead3c25b023fc576731625376041c3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/8c87b638858ee9b2b6b3cb47820a47b5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/393f000dc0e3e7ed184465acf88ee529/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/c31d2d44695e7ae245b752e14a324312/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/8d87e960b18d558c0fe5ae5c84f71657/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/7440a9922830a4ee31833698177b385d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/af6ec9573b6c15f9fd237f6ce072b96d/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/61d7a9d3fd73b5114eb3168a10e2abcd/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/506ce322c8581710995b0ba4656a7302/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/eac376a3c49f37d6ea197437315ae21d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/a4bfb6ae6f6ae0e10ecced092f7ecd54/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/cd5f2fecb1d4ed78df39358e1657eac6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/c8f877e619b32c93313a16ddeccdbb3f/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/7a40319fffcec5a7540dd202080e75fa/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/501bbc69511f06e4bc2dfd391b6c7bf5/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/da2fa0e61e7042e1f3bfa81cacf723f3/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/1019fbe096e49f2688ae4e6fc353b7c2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/255314c46cf2354cc2ef08d57e99fd9b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/c7abfda8721193b2c41cb411f930fa1d/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/95ff7d1c44c660d767fac3ebd09a3ca6/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/2cb3a92298cd3611c97f982aac99354d/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/f7318bf650e3e1b287f1dae4eeea72e6/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/248a8d1be4f6152960cbade6cd16c2f8/AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/1df5ae1a3c769907df42f6952030502b/AndroidManifest.xml:2:1-13:12
+MERGED from [org.webkit:android-jsc:r174650] /Users/quartex/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/7491791d7db7cdc62a941ad34d1f185b/AndroidManifest.xml:1:1-3:12
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/bd1caf69ddf77744442ca5eb70cdf064/AndroidManifest.xml:2:1-9:12
+INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:1-29:12
+INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:1-29:12
+INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:1-29:12
 	package
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:2:5-29
-		INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:3:11-35
+		INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12
-		INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:1-29:12
+		INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:2:11-57
 	android:versionCode
-		INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12
-		INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:1-29:12
+		INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:11-69
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:11-69
 uses-permission#android.permission.INTERNET
-ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:4:5-67
+ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:5:5-67
 	android:name
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:4:22-64
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:5:22-64
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:5:5-77
-MERGED from [com.facebook.react:react-native:0.58.3] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/react-native-0.58.3.aar/2929fa22aebe6ac0e7c3a9d819a953d0/AndroidManifest.xml:11:5-78
-MERGED from [com.facebook.react:react-native:0.58.3] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/react-native-0.58.3.aar/2929fa22aebe6ac0e7c3a9d819a953d0/AndroidManifest.xml:11:5-78
+ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:6:5-77
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/quartex/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/e8bbfc4a837b5bb5a4d05ce7fa16f4bd/AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/quartex/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/e8bbfc4a837b5bb5a4d05ce7fa16f4bd/AndroidManifest.xml:11:5-78
 	android:name
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:5:22-75
-application
-ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:7:5-25:19
-MERGED from [com.facebook.react:react-native:0.58.3] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/react-native-0.58.3.aar/2929fa22aebe6ac0e7c3a9d819a953d0/AndroidManifest.xml:13:5-20
-MERGED from [com.facebook.react:react-native:0.58.3] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/react-native-0.58.3.aar/2929fa22aebe6ac0e7c3a9d819a953d0/AndroidManifest.xml:13:5-20
-MERGED from [com.android.support:support-compat:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/f8384704169c9428a78ca216e089cda7/AndroidManifest.xml:22:5-94
-MERGED from [com.android.support:support-compat:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/f8384704169c9428a78ca216e089cda7/AndroidManifest.xml:22:5-94
-MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/89143e17be742fce2766cfd055a08a6f/AndroidManifest.xml:22:5-23:19
-MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/89143e17be742fce2766cfd055a08a6f/AndroidManifest.xml:22:5-23:19
-MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/277fba16848c0fb1cbeaabfac0532a73/AndroidManifest.xml:11:5-20
-MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/277fba16848c0fb1cbeaabfac0532a73/AndroidManifest.xml:11:5-20
-MERGED from [org.webkit:android-jsc:r174650] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/274d7581dccfc33202cfbe3f16cf45ba/AndroidManifest.xml:2:3-17
-MERGED from [org.webkit:android-jsc:r174650] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/274d7581dccfc33202cfbe3f16cf45ba/AndroidManifest.xml:2:3-17
-	android:appComponentFactory
-		ADDED from [com.android.support:support-compat:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/f8384704169c9428a78ca216e089cda7/AndroidManifest.xml:22:18-91
-	android:label
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:9:7-39
-	android:roundIcon
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:11:7-52
-	android:icon
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:10:7-41
-	android:allowBackup
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:12:7-34
-	android:theme
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:13:7-38
-	android:name
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:8:7-52
-activity#com.dex_wallet.MainActivity
-ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:14:7-23:18
-	android:label
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:16:9-41
-	android:windowSoftInputMode
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:18:9-51
-	android:configChanges
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:17:9-79
-	android:name
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:15:9-51
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:19:9-22:25
-action#android.intent.action.MAIN
-ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:20:13-65
-	android:name
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:20:21-62
-category#android.intent.category.LAUNCHER
-ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:21:13-73
-	android:name
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:21:23-70
-activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:24:7-84
-	android:name
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:24:17-81
-uses-sdk
-INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-MERGED from [:react-native-gesture-handler] /Users/oleggamega/WebstormProjects/DexApplication/node_modules/react-native-gesture-handler/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-gesture-handler] /Users/oleggamega/WebstormProjects/DexApplication/node_modules/react-native-gesture-handler/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-charts-wrapper] /Users/oleggamega/WebstormProjects/DexApplication/node_modules/react-native-charts-wrapper/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-charts-wrapper] /Users/oleggamega/WebstormProjects/DexApplication/node_modules/react-native-charts-wrapper/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.58.3] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/react-native-0.58.3.aar/2929fa22aebe6ac0e7c3a9d819a953d0/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.58.3] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/react-native-0.58.3.aar/2929fa22aebe6ac0e7c3a9d819a953d0/AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/7db50e25d6542ae8ee26698dcc973ee2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/7db50e25d6542ae8ee26698dcc973ee2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/6b694bfc672dae46804d764967800e65/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/6b694bfc672dae46804d764967800e65/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/608ede34a48df2facc40016f964b9809/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/608ede34a48df2facc40016f964b9809/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/8e3fab10e41604d7890c03c53f328898/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/8e3fab10e41604d7890c03c53f328898/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/663c338672ce95899d7e029f36629980/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/663c338672ce95899d7e029f36629980/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/c45bc6fbc446fe66cf39d93c4c267251/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/c45bc6fbc446fe66cf39d93c4c267251/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:loader:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/d7dfea4dc6dbaa1c42687bb1f9e1165d/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:loader:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/d7dfea4dc6dbaa1c42687bb1f9e1165d/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:viewpager:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/f8a2e855381d947cde9162d10df3df43/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:viewpager:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/f8a2e855381d947cde9162d10df3df43/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/becc2ad170f59ce000779d983c7a96e2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/becc2ad170f59ce000779d983c7a96e2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:drawerlayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/75839aca036ba3361ae003c9e0c1cd91/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:drawerlayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/75839aca036ba3361ae003c9e0c1cd91/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/161e91bebaef44d9866ac23ed77242b6/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/161e91bebaef44d9866ac23ed77242b6/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:customview:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/24d06ea62afafc99804ba4c89f0da94c/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:customview:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/24d06ea62afafc99804ba4c89f0da94c/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/18950ceaa044573802e7e6e141326322/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/18950ceaa044573802e7e6e141326322/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/bcfbe441deaf3b910cde38c7c13aa4b4/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/bcfbe441deaf3b910cde38c7c13aa4b4/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/f8384704169c9428a78ca216e089cda7/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/f8384704169c9428a78ca216e089cda7/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/89143e17be742fce2766cfd055a08a6f/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/89143e17be742fce2766cfd055a08a6f/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cursoradapter:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/f6a42d1165e03cb392a4d01ea84ed32a/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cursoradapter:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/f6a42d1165e03cb392a4d01ea84ed32a/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/600d26896b3e9e1fffae03e491f4a0f3/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/600d26896b3e9e1fffae03e491f4a0f3/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:documentfile:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/90eb48c6d31eaf5e3136fdec8ee84194/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:documentfile:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/90eb48c6d31eaf5e3136fdec8ee84194/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/80a5de4ad5ad906c79df4abb142b7b07/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/80a5de4ad5ad906c79df4abb142b7b07/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:print:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/cdcda34aec847c2b5861899548d7de1d/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:print:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/cdcda34aec847c2b5861899548d7de1d/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/fd37ee5d6755939bc963f5c5f2a36785/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/fd37ee5d6755939bc963f5c5f2a36785/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/69a16f00e6cced821ed2980b243c8d9b/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/69a16f00e6cced821ed2980b243c8d9b/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/e394f6aa1754f4bc7837009e534ef8e2/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/e394f6aa1754f4bc7837009e534ef8e2/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/f5d880ef47325092dfc0c2e6920ba156/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/f5d880ef47325092dfc0c2e6920ba156/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/cb4ebbc58649a0ccc610d13b79af1733/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/cb4ebbc58649a0ccc610d13b79af1733/AndroidManifest.xml:20:5-44
-MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/9f3f9a11424dc3a4f09c181d3b46de9c/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/9f3f9a11424dc3a4f09c181d3b46de9c/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/145c28bddea20d74ba8a6a7b03380de5/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/145c28bddea20d74ba8a6a7b03380de5/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/f57c2de240c74133f7102c3f60a4c0b2/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/f57c2de240c74133f7102c3f60a4c0b2/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/563d23a13f8408364ae0e130c1e9c0d3/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/563d23a13f8408364ae0e130c1e9c0d3/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/eed0b2808f212de2e8050e39457922cc/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/eed0b2808f212de2e8050e39457922cc/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/277fba16848c0fb1cbeaabfac0532a73/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/277fba16848c0fb1cbeaabfac0532a73/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/830997dee00706d2074ad4cf29a26019/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/oleggamega/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/830997dee00706d2074ad4cf29a26019/AndroidManifest.xml:5:5-7:41
-INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-	android:targetSdkVersion
-		INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-	android:minSdkVersion
-		INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-IMPLIED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:6:22-75
 uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:7:5-95
+	tools:node
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:7:73-92
+	android:name
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:7:22-72
+application
+ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:9:5-27:19
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/quartex/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/e8bbfc4a837b5bb5a4d05ce7fa16f4bd/AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/quartex/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/e8bbfc4a837b5bb5a4d05ce7fa16f4bd/AndroidManifest.xml:13:5-20
+MERGED from [com.android.support:support-compat:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/af6ec9573b6c15f9fd237f6ce072b96d/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/af6ec9573b6c15f9fd237f6ce072b96d/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/61d7a9d3fd73b5114eb3168a10e2abcd/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/61d7a9d3fd73b5114eb3168a10e2abcd/AndroidManifest.xml:22:5-23:19
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/1df5ae1a3c769907df42f6952030502b/AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/1df5ae1a3c769907df42f6952030502b/AndroidManifest.xml:11:5-20
+MERGED from [org.webkit:android-jsc:r174650] /Users/quartex/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/7491791d7db7cdc62a941ad34d1f185b/AndroidManifest.xml:2:3-17
+MERGED from [org.webkit:android-jsc:r174650] /Users/quartex/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/7491791d7db7cdc62a941ad34d1f185b/AndroidManifest.xml:2:3-17
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/af6ec9573b6c15f9fd237f6ce072b96d/AndroidManifest.xml:22:18-91
+	android:label
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:11:13-45
+	android:roundIcon
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:13:13-58
+	android:icon
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:12:13-47
+	android:allowBackup
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:14:13-40
+	android:theme
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:15:13-44
+	android:name
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:10:13-58
+activity#com.dex_wallet.MainActivity
+ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:16:9-25:20
+	android:label
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:18:17-49
+	android:windowSoftInputMode
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:20:17-59
+	android:configChanges
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:19:17-87
+	android:name
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:17:17-59
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:21:13-24:29
+action#android.intent.action.MAIN
+ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:22:17-69
+	android:name
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:22:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:23:17-77
+	android:name
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:23:27-74
+activity#com.facebook.react.devsupport.DevSettingsActivity
+ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:26:9-86
+	android:name
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:26:19-83
+uses-sdk
+INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-gesture-handler] /Users/quartex/Documents/dexWallet/DEX-Wallet/node_modules/react-native-gesture-handler/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] /Users/quartex/Documents/dexWallet/DEX-Wallet/node_modules/react-native-gesture-handler/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-charts-wrapper] /Users/quartex/Documents/dexWallet/DEX-Wallet/node_modules/react-native-charts-wrapper/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-charts-wrapper] /Users/quartex/Documents/dexWallet/DEX-Wallet/node_modules/react-native-charts-wrapper/android/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/quartex/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/e8bbfc4a837b5bb5a4d05ce7fa16f4bd/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.57.8] /Users/quartex/.gradle/caches/transforms-1/files-1.1/react-native-0.57.8.aar/e8bbfc4a837b5bb5a4d05ce7fa16f4bd/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/6736053e8ccb74eba3a568d619398a5a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/6736053e8ccb74eba3a568d619398a5a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/3fa3c173f5ba934e28cd0850906aed3c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/3fa3c173f5ba934e28cd0850906aed3c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/3b580afc57b5d40e09cd23526320aade/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/3b580afc57b5d40e09cd23526320aade/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/640879e823e7d069f199edb4d7745d62/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/640879e823e7d069f199edb4d7745d62/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/71517177b9a7dd373c7b4b1636d8e9f2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/71517177b9a7dd373c7b4b1636d8e9f2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/bddab667de7380e3bd32df86d781cd3c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/bddab667de7380e3bd32df86d781cd3c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/3771cf47e38bcc99ad6696b70d15e9bd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/3771cf47e38bcc99ad6696b70d15e9bd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/15c4780b4ee1be7209c642d8e8ec3186/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/15c4780b4ee1be7209c642d8e8ec3186/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/2aead3c25b023fc576731625376041c3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/2aead3c25b023fc576731625376041c3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/8c87b638858ee9b2b6b3cb47820a47b5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/8c87b638858ee9b2b6b3cb47820a47b5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/393f000dc0e3e7ed184465acf88ee529/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/393f000dc0e3e7ed184465acf88ee529/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/c31d2d44695e7ae245b752e14a324312/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/c31d2d44695e7ae245b752e14a324312/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/8d87e960b18d558c0fe5ae5c84f71657/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/8d87e960b18d558c0fe5ae5c84f71657/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/7440a9922830a4ee31833698177b385d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/7440a9922830a4ee31833698177b385d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/af6ec9573b6c15f9fd237f6ce072b96d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/af6ec9573b6c15f9fd237f6ce072b96d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/61d7a9d3fd73b5114eb3168a10e2abcd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/61d7a9d3fd73b5114eb3168a10e2abcd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/506ce322c8581710995b0ba4656a7302/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/506ce322c8581710995b0ba4656a7302/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/eac376a3c49f37d6ea197437315ae21d/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/eac376a3c49f37d6ea197437315ae21d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/a4bfb6ae6f6ae0e10ecced092f7ecd54/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/a4bfb6ae6f6ae0e10ecced092f7ecd54/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/cd5f2fecb1d4ed78df39358e1657eac6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/cd5f2fecb1d4ed78df39358e1657eac6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/c8f877e619b32c93313a16ddeccdbb3f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/c8f877e619b32c93313a16ddeccdbb3f/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/7a40319fffcec5a7540dd202080e75fa/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/7a40319fffcec5a7540dd202080e75fa/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/501bbc69511f06e4bc2dfd391b6c7bf5/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/501bbc69511f06e4bc2dfd391b6c7bf5/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/da2fa0e61e7042e1f3bfa81cacf723f3/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/da2fa0e61e7042e1f3bfa81cacf723f3/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/1019fbe096e49f2688ae4e6fc353b7c2/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/1019fbe096e49f2688ae4e6fc353b7c2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/255314c46cf2354cc2ef08d57e99fd9b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/255314c46cf2354cc2ef08d57e99fd9b/AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/c7abfda8721193b2c41cb411f930fa1d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/c7abfda8721193b2c41cb411f930fa1d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/95ff7d1c44c660d767fac3ebd09a3ca6/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/95ff7d1c44c660d767fac3ebd09a3ca6/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/2cb3a92298cd3611c97f982aac99354d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/2cb3a92298cd3611c97f982aac99354d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/f7318bf650e3e1b287f1dae4eeea72e6/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/f7318bf650e3e1b287f1dae4eeea72e6/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/248a8d1be4f6152960cbade6cd16c2f8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/248a8d1be4f6152960cbade6cd16c2f8/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/1df5ae1a3c769907df42f6952030502b/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/quartex/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/1df5ae1a3c769907df42f6952030502b/AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/bd1caf69ddf77744442ca5eb70cdf064/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/quartex/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/bd1caf69ddf77744442ca5eb70cdf064/AndroidManifest.xml:5:5-7:41
+INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:1-29:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/oleggamega/WebstormProjects/DexApplication/android/app/src/main/AndroidManifest.xml:1:1-27:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/src/main/AndroidManifest.xml:1:1-29:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE

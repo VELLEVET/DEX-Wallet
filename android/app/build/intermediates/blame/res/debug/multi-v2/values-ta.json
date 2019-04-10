@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/oleggamega/WebstormProjects/DexApplication/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ta/values-ta.xml",
+            "outputFile": "/Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ta/values-ta.xml",
             "map": [
                 {
-                    "source": "/Users/oleggamega/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/f8384704169c9428a78ca216e089cda7/res/values-ta/values-ta.xml",
+                    "source": "/Users/quartex/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/af6ec9573b6c15f9fd237f6ce072b96d/res/values-ta/values-ta.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/oleggamega/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/7db50e25d6542ae8ee26698dcc973ee2/res/values-ta/values-ta.xml",
+                    "source": "/Users/quartex/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/6736053e8ccb74eba3a568d619398a5a/res/values-ta/values-ta.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

@@ -624,9 +624,8 @@ int drawable rectangle_marker_right 0x7f060063
 int drawable rectangle_marker_top 0x7f060064
 int drawable rectangle_marker_top_left 0x7f060065
 int drawable rectangle_marker_top_right 0x7f060066
-int drawable redbox_top_border_background 0x7f060067
-int drawable tooltip_frame_dark 0x7f060068
-int drawable tooltip_frame_light 0x7f060069
+int drawable tooltip_frame_dark 0x7f060067
+int drawable tooltip_frame_light 0x7f060068
 int id ALT 0x7f070000
 int id CTRL 0x7f070001
 int id FUNCTION 0x7f070002
@@ -1800,5 +1799,4 @@ int[] styleable ViewStubCompat { 0x010100d0, 0x010100f2, 0x010100f3 }
 int styleable ViewStubCompat_android_id 0
 int styleable ViewStubCompat_android_layout 1
 int styleable ViewStubCompat_android_inflatedId 2
-int xml network_security_config 0x7f0e0000
-int xml preferences 0x7f0e0001
+int xml preferences 0x7f0e0000

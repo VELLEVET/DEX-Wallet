@@ -3110,9 +3110,8 @@ public final class R {
     public static final int rectangle_marker_top=0x7f060064;
     public static final int rectangle_marker_top_left=0x7f060065;
     public static final int rectangle_marker_top_right=0x7f060066;
-    public static final int redbox_top_border_background=0x7f060067;
-    public static final int tooltip_frame_dark=0x7f060068;
-    public static final int tooltip_frame_light=0x7f060069;
+    public static final int tooltip_frame_dark=0x7f060067;
+    public static final int tooltip_frame_light=0x7f060068;
   }
   public static final class id {
     public static final int ALT=0x7f070000;
@@ -12148,7 +12147,6 @@ public final class R {
     public static final int ViewStubCompat_android_inflatedId=2;
   }
   public static final class xml {
-    public static final int network_security_config=0x7f0e0000;
-    public static final int preferences=0x7f0e0001;
+    public static final int preferences=0x7f0e0000;
   }
 }

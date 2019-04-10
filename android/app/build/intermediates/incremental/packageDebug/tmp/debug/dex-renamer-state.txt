@@ -1,4 +1,4 @@
-#Wed Jan 30 12:48:47 MSK 2019
-base.0=/Users/oleggamega/WebstormProjects/DexApplication/android/app/build/intermediates/transforms/dexMerger/debug/0
+#Wed Apr 10 09:27:48 MSK 2019
+base.0=/Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

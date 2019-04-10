@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/oleggamega/WebstormProjects/DexApplication/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v22/values-v22.xml",
+            "outputFile": "/Users/quartex/Documents/dexWallet/DEX-Wallet/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v22/values-v22.xml",
             "map": [
                 {
-                    "source": "/Users/oleggamega/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/7db50e25d6542ae8ee26698dcc973ee2/res/values-v22/values-v22.xml",
+                    "source": "/Users/quartex/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/6736053e8ccb74eba3a568d619398a5a/res/values-v22/values-v22.xml",
                     "from": {
                         "startLines": "2,3,4,9",
                         "startColumns": "4,4,4,4",

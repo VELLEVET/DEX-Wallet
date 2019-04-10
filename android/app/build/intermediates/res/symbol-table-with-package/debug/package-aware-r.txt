@@ -625,7 +625,6 @@ drawable rectangle_marker_right
 drawable rectangle_marker_top
 drawable rectangle_marker_top_left
 drawable rectangle_marker_top_right
-drawable redbox_top_border_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
@@ -1326,5 +1325,4 @@ styleable Toolbar android_gravity android_minHeight buttonGravity collapseConten
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
-xml network_security_config
 xml preferences
