@@ -1,12 +1,13 @@
 import React, {Component} from "react";
-import {FlatList, RefreshControl, StyleSheet, Text, View, SafeAreaView, Dimensions, ScrollView} from "react-native";
-import {appStyle} from "../../files/styles";
+import {FlatList, RefreshControl, StyleSheet, Text, View, SafeAreaView, Dimensions, ScrollView, StatusBar} from "react-native";
 import "moment/locale/ru"
 const { width, heigth } = Dimensions.get('window')
 import {connect} from "react-redux";
 var msg;
 var data;
 var e = [];
+
+
 class Tabs extends Component<Props, State> {
     state = {
         btsQty: null,
@@ -14,8 +15,8 @@ class Tabs extends Component<Props, State> {
         commitetMemebers: null,
         activeWitnesses: null,
         transactions: null,
-        stelsQty: null
-    }
+            stelsQty: null,
+    } 
     static navigationOptions = {
         header: null,
     }
@@ -100,18 +101,20 @@ ws.onmessage = (e) => {
       }
 }
     }
-    
 
     render() {
-        console.log('1111111')
+        console.log('1111111', this.props)
         const {lastBlock, btsQty, commitetMemebers, activeWitnesses, transactions, stelsQty}  = this.state
         const { container, main, leftSide, rightSide, block, secondContainer, underAreaContainer,
              title, boldGreyText, boldWhiteText, qtyTitle, qtyText} = styles
         return (
             
             <SafeAreaView style={container}>
+
             <View style={underAreaContainer}>
+            
             <ScrollView
+            
                 width={width}
                 horizontal={false}
                 directionalLockEnabled={false}>
@@ -163,6 +166,7 @@ ws.onmessage = (e) => {
     }
 }
 const styles = StyleSheet.create({
+
     container:{
         flex: 1,
         flexDirection: 'column',

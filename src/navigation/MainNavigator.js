@@ -4,6 +4,7 @@ import Main  from '../screens/Main'
 
 import Tabs  from '../screens/Tabs'
 import CoinDetail from '../screens/CoinDetail'
+import Comission from '../screens/Comissions/Comission';
 
 const HomeNav = createStackNavigator({
         Main: {
@@ -17,7 +18,7 @@ const HomeNav = createStackNavigator({
 )
 const SecondNav = createStackNavigator({
     Main: {
-        screen: Tabs
+        screen: Comission
     },
 }, {
     navigationOptions: {
